@@ -12,7 +12,6 @@ for(int row=1 ;row<10;row++ ){
 }
 }
 
-
 public static long jieCheng(int n){
 	if(n==1){
 		return 1L;
@@ -24,10 +23,13 @@ public static long jieCheng(int n){
 	}
 }
 	
+	
+	
 	public static void main(String[] args){
-		long ret = jieCheng(25);
+		// long ret = jieCheng(25);	
+		// System.out.println(ret);
 		
-		System.out.println(ret);
+		
 	}
 }
 
