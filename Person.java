@@ -2,7 +2,18 @@ class Person{
 
 public String name;
 public int age;
+float popu=13.74f;
+static double accPopu=1370536875;
+public void population(){
+	
+	System.out.println("全国人口为"+accPopu+"人，大约为"+popu+"亿");
+	
+}
+public  void tell(){
+	
+		System.out.println("全国人口为"+accPopu+"人，大约为"+popu+"亿");
 
+}
 public Person(){
 	System.out.println("********产生一个新的Person无参对象********");
 	
@@ -45,12 +56,13 @@ public String getPersonInfo(){
 
 public static void main(String[] args){
 	Person p1 =new Person();
-	Person p3 = new Person("who");
+	Person p3 = new Person("who",15);
 	Person p2 = new Person("luca",17);
-//	System.out.println(p2.age);
-	p1.getPersonInfo();
-	p2.getPersonInfo();
-	p3.getPersonInfo();
+	p3.setName("java");
+	System.out.println(p3.getName());
+	System.out.println(p1.getPersonInfo());
+	System.out.println(p2.getPersonInfo());
+	System.out.println(p3.getPersonInfo());
 }
 
 
