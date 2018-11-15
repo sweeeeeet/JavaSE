@@ -1,12 +1,21 @@
 public class SwitchNum{
 public static void main(String[] args){
-int a = 1;
-int b =2;
-System.out.println("交换前：a="+a+"、b="+b);
-a=a+b;
-b=a-b;
-a=a-b;
-System.out.println("交换后：a="+a+"、b="+b);
+int left = 10;
+int right =8;
+System.out.println("输出交换前手中的两张纸牌");
+System.out.println("左手的纸牌"+left+"\t右手中的纸牌"+right);
+// left=(left+right);//18
+// right=(left-right);//10
+// left=(left-right);
+// left=left^right;
+// right=left^right;
+// left=left^right;
+int temp;
+temp=left;
+left=right;
+right=temp;
+System.out.println("交换后手中的两张纸牌");
+System.out.println("左手的纸牌"+left+"\t右手中的纸牌"+right);
 
 }
 
