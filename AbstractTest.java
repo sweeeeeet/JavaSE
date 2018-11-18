@@ -68,6 +68,7 @@ abstract class Oval extends Shape{
 abstract class A{
 	public A(){//4.调用构造方法
 		this.print();//5.调用B的print方法，因其为抽象方法，向子类中寻找方法的实现
+	System.out.println("测试A父类的构造函数第几步执行");
 	}
 	public abstract void print();
 	
@@ -76,7 +77,8 @@ class B extends A{
 	private int num=100;
 	public B(int num){//2.调用B的构造方法
 		super();//3.调用父类的构造方法
-		this.num=num;//7.为类中属性赋值100
+		this.num=num;//7.为子类中属性赋值100
+		System.out.println("测试B子类的构造函数第几步执行");
 	}
 	public void print(){//6.调用子类的print方法
 		System.out.println(this.num);//7.输出30
@@ -91,6 +93,6 @@ public class AbstractTest{
 		// Rectangle re=new Rectangle(1.5F,2.0F);
 		// re.area();
 		// re.Circumference();
-		new B(30);//1.实例化子类对象
+		new B(30).print();//1.实例化子类对象
 	}
 }
