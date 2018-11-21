@@ -55,6 +55,20 @@ abstract class ShopOnline{
 		}
 		
 	}
+	public boolean isCheckOrder(){
+	System.out.println("是否查询订单？y/n");
+		java.util.Scanner scan=new java.util.Scanner(System.in);
+		String input=scan.nextLine();
+		if(input.equals("y")){
+			return true;
+		}
+		if(input.equals("n")){
+			return false;
+		}else{
+			 return false;
+		}
+		
+	}
 	public abstract void scanGoods();
 	public abstract void service();
 	public abstract void post();
@@ -72,8 +86,11 @@ abstract class ShopOnline{
 	this.calculator();	
 	this.pay();	
 	
+	if(isCheckOrder()){
+		
+	this.checkOrder();
+	}
 	
-	this.checkOrder();	
 	
 	
 	}
@@ -214,7 +231,10 @@ class Tmall extends ShopOnline{
 		return true;
 	}
 		
+	public boolean isCheckOrder(){
 	
+		return true;
+	}
 	
 }
 	
