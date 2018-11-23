@@ -7,11 +7,12 @@ float f;
 byte e;
 long h;
 short j;
+
 public static void main(String args[]){
 	Demo d1= new Demo();
 	System.out.println("[MAIN]方法"+d1);
 	d1.print();
-	System.out.println("==========");
+	System.out.println("===================================");
 	Demo d2=new Demo();
 	System.out.println("[MAIN]方法"+d2);
 	d2.print();
@@ -32,7 +33,7 @@ public static void main(String args[]){
 class Demo{
 	public void print(){
 		
-		System.out.println("[PRINT]"+this);
+		System.out.println("Demo类的[PRINT]方法"+this);
 	}
 	
 }
