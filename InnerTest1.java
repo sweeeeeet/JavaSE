@@ -1,45 +1,74 @@
+
+
+// public class InnerTest1{
+	// public static void main(String[] args){
+		// Outer out=new Outer();
+		// out.test();
+	// }
+// }
+
+
 class Outer{
-	private String msg = "这是写在外部类的私有属性";
-	 
-	 //通过getter方法传递私有属性
-	 public String getMsg(){
-		return msg;
-		 
-	 }
-	 public void fun(){
-		 //创建其他类Inner的对象,调用Inner的print方法
-		 Inner in=new Inner(this);
-		 in.print();
-	 }
-	
-		
-}
-//拆分内部类
+	private String str="Outer中的字符串";
+	//-------------------------------------------
 	class Inner{
-	
-	//声明外部实例对象	
-	private Outer out;
-		
-		//以其他类的对象为参数的构造方法
-		public 	Inner(Outer out){
-			//为对象参数赋值
-			this.out=out;
-			
-		}
-		
-		public void print(){
-		//外部对象调用打印外部类的方法
-		System.out.println(out.getMsg());
-		
+		private String inner="Inner中的字符串";
+		public void fun(){
+			System.out.println(str);
 		}
 	}
-	
-public class InnerTest1{
-	
-	public static void main(String[] args){
-		//创建外部类对象，调用外部类方法
-		Outer ou =new Outer();
-		ou.fun();
-		
+	//-----------------------------------------
+	public  static void test(){
+		Outer.Inner in=new Outer().new Inner();
+		in.fun();
 	}
 }
+public class InnerTest1{
+	public static void main(String[] args){
+		Outer out=new  Outer();
+		out.test();
+	}
+}
+
+
+class A{
+	private String msg="test";
+	public String getMsg(){
+		return msg;
+	}
+}
+class B{
+	private int age=18;
+	public int getAge(){
+		return age;
+	}
+}
+class C{
+	//------------
+	class InnerA extends A{
+		public String name(){
+			return super.getMsg();
+		}
+	}
+	//---------
+	class InnerB extends B{
+		public int age(){
+			return super.getAge();
+		}
+	}
+	//---------
+	public String name(){
+		return new InnerA().name();
+	}
+	public int  age(){
+		return new InnerB().age();
+	}
+}
+// public class InnerTest1{
+	// public static void main(String[] args){
+		// C c=new C();
+		// System.out.println(c.name());
+		// System.out.println(c.age());
+		
+	// }
+// }
