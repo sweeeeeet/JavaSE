@@ -32,6 +32,7 @@ public static void Switch(int a,int b){
 	b=temp;
 	System.out.println(a);
 	System.out.println(b);
+	
 }
 
 }
