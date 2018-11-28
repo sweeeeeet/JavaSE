@@ -1,3 +1,5 @@
+package com.sweet.object;
+
 /**
  * Author:sweet
  * Created:2018/11/26
