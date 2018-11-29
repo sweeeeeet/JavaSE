@@ -1,4 +1,4 @@
-package com.sweet.object;
+package com.practice1126.object;
 
 /**
  * Author:sweet
