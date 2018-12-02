@@ -4,6 +4,8 @@ package com.practice1130.exceptions;
 
 public class Test2 {
     public static void main(String[] args) {
+        int[] arr=new int[2];
+
         Test2 s=new Test2();
         s.test();
     }
