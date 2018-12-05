@@ -6,14 +6,12 @@ package lambda;
  */
 @FunctionalInterface
 public interface IUtil2 {
-    String convert();
-
+    int convert(String str);
     public static void main(String[] args) {
-       IUtil2 iu=() -> "hello";
-        System.out.println(iu.convert());
+       String str="ni hao ";
 
-        //对象方方法引用
-        IUtil2 iUtil2="hello"::toUpperCase;
-        System.out.println(iUtil2.convert());
+       //调用"ni hao "对象的实例方法indexOf(同样是入参为String，返回值为int)
+        IUtil2 iUtil2=str::indexOf;
+        System.out.println(iUtil2.convert("n"));
     }
 }
