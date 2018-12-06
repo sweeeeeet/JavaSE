@@ -14,7 +14,7 @@ public class TestLambda2 {
     //括号中的参数与抽象方法的参数对应
     // (参数名可以重起,遵循不能与作用域内变量名重复的原则)
     //只有返回值可简写
-        Funinter2 fun2=(num)->"hello";
+        Funinter2 fun2=num->"hello";
         System.out.println(fun2.print(78));
     }
 }
