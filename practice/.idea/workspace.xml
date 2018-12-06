@@ -12,11 +12,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TestLambda2.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TestLambda2.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/lambda/TestLambda2.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+            <state relative-caret-position="630">
+              <caret line="15" column="10" lean-forward="true" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -57,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IUtil4.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="IUtil4.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lambda/IUtil4.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="288">
-              <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+              <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -120,12 +120,12 @@
         <option value="$PROJECT_DIR$/src/lambda/TestUtil2.java" />
         <option value="$PROJECT_DIR$/src/lambda/TestLambda.java" />
         <option value="$PROJECT_DIR$/src/lambda/TestLambda1.java" />
-        <option value="$PROJECT_DIR$/src/lambda/TestLambda2.java" />
         <option value="$PROJECT_DIR$/src/lambda/TestLambda3.java" />
         <option value="$PROJECT_DIR$/src/lambda/IUtil1.java" />
         <option value="$PROJECT_DIR$/src/lambda/IUtil2.java" />
         <option value="$PROJECT_DIR$/src/lambda/IUtil3.java" />
         <option value="$PROJECT_DIR$/src/lambda/IUtil4.java" />
+        <option value="$PROJECT_DIR$/src/lambda/TestLambda2.java" />
       </list>
     </option>
   </component>
@@ -145,8 +145,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -154,16 +152,56 @@
               <item name="practice" type="b2602c69:ProjectViewProjectNode" />
               <item name="practice" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="practice" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="practice" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="practice" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="practice1203" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="practice" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="lambda" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="practice" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="lambda" type="462c0819:PsiDirectoryNode" />
+              <item name="TestLambda2.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </path>
+            <path>
+              <item name="practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="practice" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="lambda" type="462c0819:PsiDirectoryNode" />
+              <item name="TestLambda3.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../practice_file" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.file-colors" />
@@ -329,14 +367,16 @@
       <workItem from="1543818357911" duration="10053000" />
       <workItem from="1543884297123" duration="3871000" />
       <workItem from="1543923668270" duration="38000" />
+      <workItem from="1543972190941" duration="1463000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81212000" />
+    <option name="totallyTimeSpent" value="82675000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -358,10 +398,10 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32913387" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.29291338" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32913387" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,13 +688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lambda/TestLambda2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/lambda/TestLambda3.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="588">
@@ -693,7 +726,14 @@
     <entry file="file://$PROJECT_DIR$/src/lambda/IUtil4.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
-          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lambda/TestLambda2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="15" column="10" lean-forward="true" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
         </state>
       </provider>
     </entry>
