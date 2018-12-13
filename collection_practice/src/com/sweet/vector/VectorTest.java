@@ -28,7 +28,9 @@ public class VectorTest {
             ((ListIterator<String>) iterator).set("***");
             ((ListIterator<String>) iterator).add("+");
         }
-
+while(((ListIterator<String>) iterator).hasPrevious()){
+    System.out.println(((ListIterator<String>) iterator).previous());
+}
         for(int i=0,len=vector.size();i<len;i++){
             System.out.println(vector.get(i));
             // vector.add("sm");//添加删除操作不能在当前遍历打印下起作用
