@@ -26,21 +26,7 @@ public final class IoUtil {
         //TODO
         return -1;
     }
-    
-    
-    /**
-     * 拷贝流，使用默认Buffer大小
-     *
-     * @param in  输入流
-     * @param out 输出流
-     * @return 传输的byte数
-     */
-    public static long copy(InputStream in, OutputStream out) {
-        //TODO
-        return -1;
-    }
-    
-    
+
     /**
      * 拷贝文件流，使用NIO
      *
@@ -52,7 +38,17 @@ public final class IoUtil {
         //TODO
         return -1;
     }
-    
+    /**
+     * 拷贝流，使用默认Buffer大小
+     *
+     * @param in  输入流
+     * @param out 输出流
+     * @return 传输的byte数
+     */
+    public static long copy(InputStream in, OutputStream out) {
+        //TODO
+        return -1;
+    }
     
     /**
      * 获得一个Reader
