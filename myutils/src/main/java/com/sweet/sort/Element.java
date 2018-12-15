@@ -1,7 +1,7 @@
 package com.sweet.sort;
 
 /**
- * Author: secondriver
+ * Author: 
  * Created: 2018/9/10
  */
 public class Element<T> implements Comparable {
