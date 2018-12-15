@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * Author: secondriver
+ * Author: 
  * Created: 2018/10/16
  */
 public final class ArrayUtil {
@@ -34,7 +34,20 @@ public final class ArrayUtil {
         return false;
     }
     
+   
+    
     /**
+     * 数组是否为空
+     *
+     * @param array 数组
+     * @return 是否为空
+     */
+    public static boolean isEmpty(final long... array) {
+        //TODO
+        return false;
+    }
+	
+	 /**
      * 数组是否为空<br>
      * 此方法会匹配单一对象，如果此对象为{@code null}则返回true<br>
      * 如果此对象为非数组，理解为此对象为数组的第一个元素，则返回false<br>
@@ -44,17 +57,6 @@ public final class ArrayUtil {
      * @return 是否为空
      */
     public static boolean isEmpty(Object array) {
-        //TODO
-        return false;
-    }
-    
-    /**
-     * 数组是否为空
-     *
-     * @param array 数组
-     * @return 是否为空
-     */
-    public static boolean isEmpty(final long... array) {
         //TODO
         return false;
     }
