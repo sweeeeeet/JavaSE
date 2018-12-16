@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * 三元组对象
- * Author: secondriver
+ * Author: 
  * Created: 2018/10/16
  */
 public final class Triple<L, M, R> implements Serializable {
