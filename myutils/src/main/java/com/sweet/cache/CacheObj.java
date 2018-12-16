@@ -2,7 +2,7 @@ package com.sweet.cache;
 
 /**
  * 缓存对象
- * Author: secondriver
+ * Author: 
  * Created: 2018/10/16
  *
  * @param <K> Key类型
