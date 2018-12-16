@@ -6,7 +6,7 @@ import java.io.Serializable;
 /**
  * 键值对对象，只能在构造时传入键值
  * <p>
- * Author: secondriver
+ * Author: 
  * Created: 2018/10/16
  */
 public final class Pair<L, R> implements Serializable {
