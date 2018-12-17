@@ -8,6 +8,7 @@ import java.util.*;
  */
 public class VectorTest {
     public static void main(String[] args) {
+        Map<String, String> map = Collections.synchronizedMap(new HashMap<>());
         List<String> vector=new Vector<>();
         vector.add("hello");
         vector.add("java");
