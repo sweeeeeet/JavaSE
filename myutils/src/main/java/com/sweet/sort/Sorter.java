@@ -2,7 +2,7 @@ package com.sweet.sort;
 
 /**
  * 排序接口
- * Author: secondriver
+ * Author: 
  * Created: 2018/10/13
  */
 public interface Sorter {
