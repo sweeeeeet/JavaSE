@@ -16,7 +16,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * <li>创建一个新的Map</li>
  * <li>实现 <code>prune</code> 策略</li>
  * </ul>
- * Author: secondriver
+ * Author: 
  * Created: 2018/10/17
  */
 public abstract class AbstractCache<K, V> implements Cache<K, V> {
