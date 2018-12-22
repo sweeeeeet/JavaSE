@@ -1,7 +1,7 @@
 package com.sweet.util;
 
 /**
- * Author: secondriver
+ * Author: 
  * Created: 2018/10/16
  */
 public final class CharUtil {
