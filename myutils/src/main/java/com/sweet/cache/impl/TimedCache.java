@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * 定时缓存，此缓存没有容量限制，对象只有在过期后才会被移除
  * <p>
- * Author: secondriver
+ * Author: 
  * Created: 2018/10/16
  */
 public class TimedCache<K, V> extends AbstractCache<K, V> {
