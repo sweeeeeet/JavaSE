@@ -14,7 +14,7 @@ import java.util.LinkedHashMap;
  * 缺点：不灵活，不能保证最常用的对象总是被保留
  * </p>
  * <p>
- * Author: secondriver
+ * Author: 
  * Created: 2018/10/16
  */
 public class FIFOCache<K, V> extends AbstractCache<K, V> {
