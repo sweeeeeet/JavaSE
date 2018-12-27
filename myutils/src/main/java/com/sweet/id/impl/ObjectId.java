@@ -23,7 +23,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * <p>
  * 参考：http://blog.csdn.net/qxc1281/article/details/54021882
  * <p>
- * Author: secondriver
+ * Author: 
  * Created: 2018/10/17
  */
 public class ObjectId implements IdGenerator {
