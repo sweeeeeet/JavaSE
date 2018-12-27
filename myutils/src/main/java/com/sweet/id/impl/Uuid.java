@@ -7,7 +7,7 @@ import java.util.UUID;
 /**
  * 简化的UUID，去掉了横线
  * <p>
- * Author: secondriver
+ * Author: 
  * Created: 2018/10/17
  */
 public class Uuid implements IdGenerator {
