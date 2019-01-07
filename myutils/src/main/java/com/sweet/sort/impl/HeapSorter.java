@@ -6,7 +6,7 @@ import com.sweet.sort.Sorter;
 /**
  * 堆排序
  * <p>
- * Author: secondriver
+ * Author: 
  * Created: 2018/10/13
  */
 public class HeapSorter implements Sorter {
