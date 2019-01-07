@@ -1,9 +1,6 @@
 package com.sweet.arraylist;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Author:sweet
@@ -25,11 +22,20 @@ public class NewMethodTest {
        }
         System.out.println("----------------------");
 
-       //通过迭代方法打印集合
-        Iterator<Integer>  iterator=list.iterator();
-       while (iterator.hasNext()){
-           System.out.print(iterator.next());
+       //通过迭代方法打印集合,正向遍历
+        ListIterator<Integer> iterator=list.listIterator();
+        while(iterator.hasNext()){
+            System.out.print(iterator.next());
+        }
+        System.out.println(">>>>>>>>>>>");
+
+        //通过迭代方法打印集合,反向遍历
+       while(iterator.hasPrevious()){//此时游标已经移到了最末尾
+           System.out.println(iterator.previous());
+           System.out.println(" ->");
        }
+
+
 //通过对象数组接收集合元素,foreach打印集合
 
         //1.使用toArray方法需要强转(Collection接口中的内容),不推荐
