@@ -6,7 +6,7 @@ import com.sweet.sort.Sorter;
 /**
  * 冒泡排序  样例实现
  * <p>
- * Author: secondriver
+ * Author: 
  * Created: 2018/10/13
  */
 public class BubbleSorter implements Sorter {
