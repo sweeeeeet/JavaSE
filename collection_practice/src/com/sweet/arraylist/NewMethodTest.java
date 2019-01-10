@@ -22,7 +22,7 @@ public class NewMethodTest {
        }
         System.out.println("----------------------");
 
-       //通过迭代方法打印集合,正向遍历
+       //通过迭代方法打印集合,正向遍历(listIterator是双向迭代器)
         ListIterator<Integer> iterator=list.listIterator();
         while(iterator.hasNext()){
             System.out.print(iterator.next());
@@ -35,7 +35,18 @@ public class NewMethodTest {
            System.out.println(" ->");
        }
 
-
+       //单向迭代器输出集合
+        System.out.println("单向迭代器迭代输出");
+        Iterator<Integer> iterator1=list.iterator();
+       while(iterator1.hasNext()){
+           System.out.println(iterator1.next());
+          // list.add(12);
+       }
+//foreach
+        System.out.println("foreach");
+        for(Integer e:list){
+            System.out.println(e);
+        }
 //通过对象数组接收集合元素,foreach打印集合
 
         //1.使用toArray方法需要强转(Collection接口中的内容),不推荐
