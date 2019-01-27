@@ -6,21 +6,21 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * Author: 
+ * Author:
  * Created: 2018/10/16
  */
 public final class ArrayUtil {
-    
+
     /**
      * 数组中元素未找到的下标，值为-1
      */
     public static final int INDEX_NOT_FOUND = -1;
-    
+
     private ArrayUtil() {
-    
+
     }
-    
-    
+
+
     /**
      * 数组是否为空
      *
@@ -30,12 +30,17 @@ public final class ArrayUtil {
      */
     @SuppressWarnings("unchecked")
     public static <T> boolean isEmpty(final T... array) {
-        //TODO
-        return false;
+        if (array == null) {
+            return true;
+        } else {
+            if (array.length == 0) {
+                return true;
+            }
+            return false;
+        }
     }
-    
-   
-    
+
+
     /**
      * 数组是否为空
      *
@@ -43,11 +48,17 @@ public final class ArrayUtil {
      * @return 是否为空
      */
     public static boolean isEmpty(final long... array) {
-        //TODO
-        return false;
+        if (array == null) {
+            return true;
+        } else {
+            if (array.length == 0) {
+                return true;
+            }
+            return false;
+        }
     }
-	
-	 /**
+
+    /**
      * 数组是否为空<br>
      * 此方法会匹配单一对象，如果此对象为{@code null}则返回true<br>
      * 如果此对象为非数组，理解为此对象为数组的第一个元素，则返回false<br>
@@ -57,10 +68,15 @@ public final class ArrayUtil {
      * @return 是否为空
      */
     public static boolean isEmpty(Object array) {
-        //TODO
+        if (array == null) {
+            return true;
+        }
+        if (array.getClass().isArray()) {
+            return false;
+        }
         return false;
     }
-    
+
     /**
      * 数组是否为空
      *
@@ -68,10 +84,16 @@ public final class ArrayUtil {
      * @return 是否为空
      */
     public static boolean isEmpty(final int... array) {
-        //TODO
-        return false;
+        if (array == null) {
+            return true;
+        } else {
+            if (array.length == 0) {
+                return true;
+            }
+            return false;
+        }
     }
-    
+
     /**
      * 数组是否为空
      *
@@ -79,10 +101,16 @@ public final class ArrayUtil {
      * @return 是否为空
      */
     public static boolean isEmpty(final short... array) {
-        //TODO
-        return false;
+        if (array == null) {
+            return true;
+        } else {
+            if (array.length == 0) {
+                return true;
+            }
+            return false;
+        }
     }
-    
+
     /**
      * 数组是否为空
      *
@@ -90,10 +118,16 @@ public final class ArrayUtil {
      * @return 是否为空
      */
     public static boolean isEmpty(final char... array) {
-        //TODO
-        return false;
+        if (array == null) {
+            return true;
+        } else {
+            if (array.length == 0) {
+                return true;
+            }
+            return false;
+        }
     }
-    
+
     /**
      * 数组是否为空
      *
@@ -101,10 +135,16 @@ public final class ArrayUtil {
      * @return 是否为空
      */
     public static boolean isEmpty(final byte... array) {
-        //TODO
-        return false;
+        if (array == null) {
+            return true;
+        } else {
+            if (array.length == 0) {
+                return true;
+            }
+            return false;
+        }
     }
-    
+
     /**
      * 数组是否为空
      *
@@ -112,10 +152,16 @@ public final class ArrayUtil {
      * @return 是否为空
      */
     public static boolean isEmpty(final double... array) {
-        //TODO
-        return false;
+        if (array == null) {
+            return true;
+        } else {
+            if (array.length == 0) {
+                return true;
+            }
+            return false;
+        }
     }
-    
+
     /**
      * 数组是否为空
      *
@@ -123,10 +169,16 @@ public final class ArrayUtil {
      * @return 是否为空
      */
     public static boolean isEmpty(final float... array) {
-        //TODO
-        return false;
+        if (array == null) {
+            return true;
+        } else {
+            if (array.length == 0) {
+                return true;
+            }
+            return false;
+        }
     }
-    
+
     /**
      * 数组是否为空
      *
@@ -134,11 +186,17 @@ public final class ArrayUtil {
      * @return 是否为空
      */
     public static boolean isEmpty(final boolean... array) {
-        //TODO
-        return false;
+        if (array == null) {
+            return true;
+        } else {
+            if (array.length == 0) {
+                return true;
+            }
+            return false;
+        }
     }
-    
-    
+
+
     /**
      * 数组是否为非空
      *
@@ -148,10 +206,16 @@ public final class ArrayUtil {
      */
     @SuppressWarnings("unchecked")
     public static <T> boolean isNotEmpty(final T... array) {
-        //TODO
-        return false;
+        if (array == null) {
+            return false;
+        }
+        if (array.length == 0) {
+            return false;
+        }
+        return true;
+
     }
-    
+
     /**
      * 数组是否为非空<br>
      * 此方法会匹配单一对象，如果此对象为{@code null}则返回false<br>
@@ -162,10 +226,15 @@ public final class ArrayUtil {
      * @return 是否为非空
      */
     public static boolean isNotEmpty(final Object array) {
-        //TODO
-        return false;
+        if (array == null) {
+            return false;
+        }
+        if (array.getClass().isArray()) {
+            return true;
+        }
+        return true;
     }
-    
+
     /**
      * 数组是否为非空
      *
@@ -173,10 +242,15 @@ public final class ArrayUtil {
      * @return 是否为非空
      */
     public static boolean isNotEmpty(final long... array) {
-        //TODO
-        return false;
+        if (array == null) {
+            return false;
+        }
+        if (array.length == 0) {
+            return false;
+        }
+        return true;
     }
-    
+
     /**
      * 数组是否为非空
      *
@@ -184,10 +258,15 @@ public final class ArrayUtil {
      * @return 是否为非空
      */
     public static boolean isNotEmpty(final int... array) {
-        //TODO
-        return false;
+        if (array == null) {
+            return false;
+        }
+        if (array.length == 0) {
+            return false;
+        }
+        return true;
     }
-    
+
     /**
      * 数组是否为非空
      *
@@ -195,10 +274,15 @@ public final class ArrayUtil {
      * @return 是否为非空
      */
     public static boolean isNotEmpty(final short... array) {
-        //TODO
-        return false;
+        if (array == null) {
+            return false;
+        }
+        if (array.length == 0) {
+            return false;
+        }
+        return true;
     }
-    
+
     /**
      * 数组是否为非空
      *
@@ -206,10 +290,15 @@ public final class ArrayUtil {
      * @return 是否为非空
      */
     public static boolean isNotEmpty(final char... array) {
-        //TODO
-        return false;
+        if (array == null) {
+            return false;
+        }
+        if (array.length == 0) {
+            return false;
+        }
+        return true;
     }
-    
+
     /**
      * 数组是否为非空
      *
@@ -217,10 +306,15 @@ public final class ArrayUtil {
      * @return 是否为非空
      */
     public static boolean isNotEmpty(final byte... array) {
-        //TODO
-        return false;
+        if (array == null) {
+            return false;
+        }
+        if (array.length == 0) {
+            return false;
+        }
+        return true;
     }
-    
+
     /**
      * 数组是否为非空
      *
@@ -228,10 +322,15 @@ public final class ArrayUtil {
      * @return 是否为非空
      */
     public static boolean isNotEmpty(final double... array) {
-        //TODO
-        return false;
+        if (array == null) {
+            return false;
+        }
+        if (array.length == 0) {
+            return false;
+        }
+        return true;
     }
-    
+
     /**
      * 数组是否为非空
      *
@@ -239,10 +338,15 @@ public final class ArrayUtil {
      * @return 是否为非空
      */
     public static boolean isNotEmpty(final float... array) {
-        //TODO
-        return false;
+        if (array == null) {
+            return false;
+        }
+        if (array.length == 0) {
+            return false;
+        }
+        return true;
     }
-    
+
     /**
      * 数组是否为非空
      *
@@ -250,10 +354,15 @@ public final class ArrayUtil {
      * @return 是否为非空
      */
     public static boolean isNotEmpty(final boolean... array) {
-        //TODO
-        return false;
+        if (array == null) {
+            return false;
+        }
+        if (array.length == 0) {
+            return false;
+        }
+        return true;
     }
-    
+
     /**
      * 是否包含{@code null}元素
      *
@@ -263,10 +372,21 @@ public final class ArrayUtil {
      */
     @SuppressWarnings("unchecked")
     public static <T> boolean hasNull(T... array) {
-        //TODO
+        if (array == null) {
+            return true;
+        }
+        if (array.length == 0) {
+            return true;
+        } else {
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] == null) {
+                    return true;
+                }
+            }
         return false;
+        }
     }
-    
+
     /**
      * 返回数组中第一个非空元素
      *
@@ -276,10 +396,16 @@ public final class ArrayUtil {
      */
     @SuppressWarnings("unchecked")
     public static <T> T firstNonNull(T... array) {
-        //TODO
+        if(array!=null){
+            for(int i=0;i<array.length;i++){
+                if(array[i]!=null){
+                    return array[i];
+                }
+            }
+        }
         return null;
     }
-    
+
     /**
      * 新建一个空数组
      *
@@ -290,10 +416,10 @@ public final class ArrayUtil {
      */
     @SuppressWarnings("unchecked")
     public static <T> T[] newArray(Class<?> componentType, int newSize) {
-        //TODO
-        return null;
+        T[] obj= (T[]) Array.newInstance(componentType,newSize);
+        return obj;
     }
-    
+
     /**
      * 新建一个空数组
      *
@@ -303,10 +429,10 @@ public final class ArrayUtil {
      */
     @SuppressWarnings("unchecked")
     public static <T> T[] newArray(int newSize) {
-        //TODO
-        return null;
+        T[] obj= (T[]) Array.newInstance(Object.class.getComponentType(),newSize);
+        return obj;
     }
-    
+
     /**
      * 获取数组对象的元素类型
      *
@@ -314,10 +440,10 @@ public final class ArrayUtil {
      * @return 元素类型
      */
     public static Class<?> getComponentType(Object array) {
-        //TODO
-        return null;
+       return array.getClass().getComponentType();
+
     }
-    
+
     /**
      * 获取数组对象的元素类型
      *
@@ -325,10 +451,10 @@ public final class ArrayUtil {
      * @return 元素类型
      */
     public static Class<?> getComponentType(Class<?> arrayClass) {
-        //TODO
-        return null;
+
+        return arrayClass.getClass().getComponentType();
     }
-    
+
     /**
      * 根据数组元素类型，获取数组的类型<br>
      * 方法是通过创建一个空数组从而获取其类型
@@ -337,10 +463,10 @@ public final class ArrayUtil {
      * @return 数组类型
      */
     public static Class<?> getArrayType(Class<?> componentType) {
-        //TODO
-        return null;
+
+        return Array.newInstance(componentType).getClass();
     }
-    
+
     /**
      * 强转数组类型<br>
      * 强制转换的前提是数组元素类型可被强制转换<br>
@@ -356,7 +482,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 将新元素添加到已有数组中<br>
      * 添加新元素会生成一个新的数组，不影响原数组
@@ -371,7 +497,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 将新元素添加到已有数组中<br>
      * 添加新元素会生成一个新的数组，不影响原数组
@@ -386,8 +512,8 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
-    
+
+
     /**
      * 将新元素插入到到已有数组中的某个位置<br>
      * 添加新元素会生成一个新的数组，不影响原数组<br>
@@ -404,7 +530,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 将新元素插入到到已有数组中的某个位置<br>
      * 添加新元素会生成一个新的数组，不影响原数组<br>
@@ -421,7 +547,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 生成一个新的重新设置大小的数组<br>
      * 调整大小后拷贝原数组到新数组下。扩大则占位前N个位置，缩小则截断
@@ -436,7 +562,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 生成一个新的重新设置大小的数组<br>
      * 新数组的类型为原数组的类型，调整大小后拷贝原数组到新数组下。扩大则占位前N个位置，缩小则截断
@@ -450,7 +576,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 将多个数组合并在一起<br>
      * 忽略null的数组
@@ -464,8 +590,8 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
-    
+
+
     /**
      * 生成一个从0开始的数字列表<br>
      *
@@ -476,7 +602,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 生成一个数字列表<br>
      * 自动判定正序反序
@@ -489,7 +615,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 生成一个数字列表<br>
      * 自动判定正序反序
@@ -503,7 +629,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 拆分byte数组为几个等份（最后一份可能小于len）
      *
@@ -515,8 +641,8 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
-    
+
+
     /**
      * 映射键值（参考Python的zip()函数）<br>
      * 例如：<br>
@@ -536,7 +662,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 映射键值（参考Python的zip()函数），返回Map无序<br>
      * 例如：<br>
@@ -555,8 +681,8 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
-    
+
+
     /**
      * 返回数组中指定元素所在位置，未找到返回{@link #INDEX_NOT_FOUND}
      *
@@ -569,7 +695,7 @@ public final class ArrayUtil {
         //TODO
         return INDEX_NOT_FOUND;
     }
-    
+
     /**
      * 返回数组中指定元素所在位置，忽略大小写，未找到返回{@link #INDEX_NOT_FOUND}
      *
@@ -581,7 +707,7 @@ public final class ArrayUtil {
         //TODO
         return INDEX_NOT_FOUND;
     }
-    
+
     /**
      * 返回数组中指定元素所在最后的位置，未找到返回{@link #INDEX_NOT_FOUND}
      *
@@ -594,7 +720,7 @@ public final class ArrayUtil {
         //TODO
         return INDEX_NOT_FOUND;
     }
-    
+
     /**
      * 数组中是否包含元素
      *
@@ -607,7 +733,7 @@ public final class ArrayUtil {
         //TODO
         return false;
     }
-    
+
     /**
      * 数组中是否包含元素，忽略大小写
      *
@@ -619,7 +745,7 @@ public final class ArrayUtil {
         //TODO
         return false;
     }
-    
+
     /**
      * 返回数组中指定元素所在位置，未找到返回{@link #INDEX_NOT_FOUND}
      *
@@ -631,7 +757,7 @@ public final class ArrayUtil {
         //TODO
         return INDEX_NOT_FOUND;
     }
-    
+
     /**
      * 返回数组中指定元素所在最后的位置，未找到返回{@link #INDEX_NOT_FOUND}
      *
@@ -643,7 +769,7 @@ public final class ArrayUtil {
         //TODO
         return INDEX_NOT_FOUND;
     }
-    
+
     /**
      * 数组中是否包含元素
      *
@@ -655,7 +781,7 @@ public final class ArrayUtil {
         //TODO
         return false;
     }
-    
+
     /**
      * 返回数组中指定元素所在位置，未找到返回{@link #INDEX_NOT_FOUND}
      *
@@ -667,7 +793,7 @@ public final class ArrayUtil {
         //TODO
         return INDEX_NOT_FOUND;
     }
-    
+
     /**
      * 返回数组中指定元素所在最后的位置，未找到返回{@link #INDEX_NOT_FOUND}
      *
@@ -679,7 +805,7 @@ public final class ArrayUtil {
         //TODO
         return INDEX_NOT_FOUND;
     }
-    
+
     /**
      * 数组中是否包含元素
      *
@@ -691,7 +817,7 @@ public final class ArrayUtil {
         //TODO
         return false;
     }
-    
+
     /**
      * 返回数组中指定元素所在位置，未找到返回{@link #INDEX_NOT_FOUND}
      *
@@ -703,7 +829,7 @@ public final class ArrayUtil {
         //TODO
         return INDEX_NOT_FOUND;
     }
-    
+
     /**
      * 返回数组中指定元素所在最后的位置，未找到返回{@link #INDEX_NOT_FOUND}
      *
@@ -715,7 +841,7 @@ public final class ArrayUtil {
         //TODO
         return INDEX_NOT_FOUND;
     }
-    
+
     /**
      * 数组中是否包含元素
      *
@@ -727,7 +853,7 @@ public final class ArrayUtil {
         //TODO
         return false;
     }
-    
+
     /**
      * 返回数组中指定元素所在位置，未找到返回{@link #INDEX_NOT_FOUND}
      *
@@ -739,7 +865,7 @@ public final class ArrayUtil {
         //TODO
         return INDEX_NOT_FOUND;
     }
-    
+
     /**
      * 返回数组中指定元素所在最后的位置，未找到返回{@link #INDEX_NOT_FOUND}
      *
@@ -751,7 +877,7 @@ public final class ArrayUtil {
         //TODO
         return INDEX_NOT_FOUND;
     }
-    
+
     /**
      * 数组中是否包含元素
      *
@@ -763,7 +889,7 @@ public final class ArrayUtil {
         //TODO
         return false;
     }
-    
+
     /**
      * 返回数组中指定元素所在位置，未找到返回{@link #INDEX_NOT_FOUND}
      *
@@ -775,7 +901,7 @@ public final class ArrayUtil {
         //TODO
         return INDEX_NOT_FOUND;
     }
-    
+
     /**
      * 返回数组中指定元素所在最后的位置，未找到返回{@link #INDEX_NOT_FOUND}
      *
@@ -787,7 +913,7 @@ public final class ArrayUtil {
         //TODO
         return INDEX_NOT_FOUND;
     }
-    
+
     /**
      * 数组中是否包含元素
      *
@@ -799,7 +925,7 @@ public final class ArrayUtil {
         //TODO
         return false;
     }
-    
+
     /**
      * 返回数组中指定元素所在位置，未找到返回{@link #INDEX_NOT_FOUND}
      *
@@ -811,6 +937,7 @@ public final class ArrayUtil {
         //TODO
         return INDEX_NOT_FOUND;
     }
+
     /**
      * 返回数组中指定元素所在最后的位置，未找到返回{@link #INDEX_NOT_FOUND}
      *
@@ -822,7 +949,7 @@ public final class ArrayUtil {
         //TODO
         return INDEX_NOT_FOUND;
     }
-    
+
     /**
      * 数组中是否包含元素
      *
@@ -834,7 +961,7 @@ public final class ArrayUtil {
         //TODO
         return false;
     }
-    
+
     /**
      * 返回数组中指定元素所在位置，未找到返回{@link #INDEX_NOT_FOUND}
      *
@@ -846,7 +973,7 @@ public final class ArrayUtil {
         //TODO
         return INDEX_NOT_FOUND;
     }
-    
+
     /**
      * 返回数组中指定元素所在最后的位置，未找到返回{@link #INDEX_NOT_FOUND}
      *
@@ -858,7 +985,7 @@ public final class ArrayUtil {
         //TODO
         return INDEX_NOT_FOUND;
     }
-    
+
     /**
      * 数组中是否包含元素
      *
@@ -870,7 +997,7 @@ public final class ArrayUtil {
         //TODO
         return false;
     }
-    
+
     /**
      * 返回数组中指定元素所在位置，未找到返回{@link #INDEX_NOT_FOUND}
      *
@@ -882,7 +1009,7 @@ public final class ArrayUtil {
         //TODO
         return INDEX_NOT_FOUND;
     }
-    
+
     /**
      * 返回数组中指定元素所在最后的位置，未找到返回{@link #INDEX_NOT_FOUND}
      *
@@ -894,7 +1021,7 @@ public final class ArrayUtil {
         //TODO
         return INDEX_NOT_FOUND;
     }
-    
+
     /**
      * 数组中是否包含元素
      *
@@ -906,9 +1033,9 @@ public final class ArrayUtil {
         //TODO
         return false;
     }
-    
+
     // ------------------------------------------------------------------- Wrap and unwrap
-    
+
     /**
      * 将原始类型数组包装为包装类型
      *
@@ -919,7 +1046,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 包装类数组转为原始类型数组
      *
@@ -930,7 +1057,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 将原始类型数组包装为包装类型
      *
@@ -941,7 +1068,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 包装类数组转为原始类型数组
      *
@@ -952,7 +1079,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 将原始类型数组包装为包装类型
      *
@@ -963,7 +1090,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 包装类数组转为原始类型数组
      *
@@ -974,7 +1101,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 将原始类型数组包装为包装类型
      *
@@ -985,7 +1112,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 包装类数组转为原始类型数组
      *
@@ -996,7 +1123,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 将原始类型数组包装为包装类型
      *
@@ -1007,7 +1134,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 包装类数组转为原始类型数组
      *
@@ -1018,7 +1145,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 将原始类型数组包装为包装类型
      *
@@ -1029,7 +1156,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 包装类数组转为原始类型数组
      *
@@ -1040,7 +1167,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 将原始类型数组包装为包装类型
      *
@@ -1051,7 +1178,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 包装类数组转为原始类型数组
      *
@@ -1062,7 +1189,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 将原始类型数组包装为包装类型
      *
@@ -1073,7 +1200,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 包装类数组转为原始类型数组
      *
@@ -1084,7 +1211,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 包装数组对象
      *
@@ -1095,7 +1222,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 对象是否为数组对象
      *
@@ -1106,7 +1233,7 @@ public final class ArrayUtil {
         //TODO
         return false;
     }
-    
+
     /**
      * 获取数组对象中指定index的值，支持负数，例如-1表示倒数第一个值
      *
@@ -1120,7 +1247,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 获取数组中指定多个下标元素值，组成新数组
      *
@@ -1133,7 +1260,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 获取子数组
      *
@@ -1146,7 +1273,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 获取子数组
      *
@@ -1160,7 +1287,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 数组或集合转String
      *
@@ -1171,7 +1298,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 获取数组长度<br>
      * 如果参数为{@code null}，返回0
@@ -1194,8 +1321,8 @@ public final class ArrayUtil {
         //TODO
         return -1;
     }
-    
-    
+
+
     /**
      * 以 conjunction 为分隔符将数组转换为字符串
      *
@@ -1207,7 +1334,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 以 conjunction 为分隔符将数组转换为字符串
      *
@@ -1219,7 +1346,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 以 conjunction 为分隔符将数组转换为字符串
      *
@@ -1231,7 +1358,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 以 conjunction 为分隔符将数组转换为字符串
      *
@@ -1243,7 +1370,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 以 conjunction 为分隔符将数组转换为字符串
      *
@@ -1255,7 +1382,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 以 conjunction 为分隔符将数组转换为字符串
      *
@@ -1267,7 +1394,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 以 conjunction 为分隔符将数组转换为字符串
      *
@@ -1279,7 +1406,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 以 conjunction 为分隔符将数组转换为字符串
      *
@@ -1291,7 +1418,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 以 conjunction 为分隔符将数组转换为字符串
      *
@@ -1303,7 +1430,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * {@link ByteBuffer} 转byte数组
      *
@@ -1314,7 +1441,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 将集合转为数组
      *
@@ -1327,9 +1454,9 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     // ---------------------------------------------------------------------- remove
-    
+
     /**
      * 移除数组中对应位置的元素<br>
      * copy from commons-lang
@@ -1345,7 +1472,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 移除数组中对应位置的元素<br>
      * copy from commons-lang
@@ -1359,7 +1486,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 移除数组中对应位置的元素<br>
      * copy from commons-lang
@@ -1373,7 +1500,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 移除数组中对应位置的元素<br>
      * copy from commons-lang
@@ -1387,7 +1514,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 移除数组中对应位置的元素<br>
      * copy from commons-lang
@@ -1401,7 +1528,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 移除数组中对应位置的元素<br>
      * copy from commons-lang
@@ -1415,7 +1542,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 移除数组中对应位置的元素<br>
      * copy from commons-lang
@@ -1429,7 +1556,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 移除数组中对应位置的元素<br>
      * copy from commons-lang
@@ -1443,7 +1570,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 移除数组中对应位置的元素<br>
      * copy from commons-lang
@@ -1457,7 +1584,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 移除数组中对应位置的元素<br>
      * copy from commons-lang
@@ -1471,9 +1598,9 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     // ---------------------------------------------------------------------- remove
-    
+
     /**
      * 移除数组中指定的元素<br>
      * 只会移除匹配到的第一个元素 copy from commons-lang
@@ -1488,7 +1615,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 移除数组中指定的元素<br>
      * 只会移除匹配到的第一个元素 copy from commons-lang
@@ -1502,7 +1629,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 移除数组中指定的元素<br>
      * 只会移除匹配到的第一个元素 copy from commons-lang
@@ -1516,7 +1643,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 移除数组中指定的元素<br>
      * 只会移除匹配到的第一个元素 copy from commons-lang
@@ -1530,7 +1657,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 移除数组中指定的元素<br>
      * 只会移除匹配到的第一个元素 copy from commons-lang
@@ -1544,7 +1671,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 移除数组中指定的元素<br>
      * 只会移除匹配到的第一个元素 copy from commons-lang
@@ -1558,7 +1685,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 移除数组中指定的元素<br>
      * 只会移除匹配到的第一个元素 copy from commons-lang
@@ -1572,7 +1699,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 移除数组中指定的元素<br>
      * 只会移除匹配到的第一个元素 copy from commons-lang
@@ -1586,7 +1713,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 移除数组中指定的元素<br>
      * 只会移除匹配到的第一个元素 copy from commons-lang
@@ -1600,7 +1727,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 反转数组，会变更原数组
      *
@@ -1614,7 +1741,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 反转数组，会变更原数组
      *
@@ -1626,7 +1753,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 反转数组，会变更原数组
      *
@@ -1639,7 +1766,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 反转数组，会变更原数组
      *
@@ -1650,7 +1777,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 反转数组，会变更原数组
      *
@@ -1663,7 +1790,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 反转数组，会变更原数组
      *
@@ -1674,7 +1801,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 反转数组，会变更原数组
      *
@@ -1687,7 +1814,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 反转数组，会变更原数组
      *
@@ -1698,7 +1825,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 反转数组，会变更原数组
      *
@@ -1711,7 +1838,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 反转数组，会变更原数组
      *
@@ -1722,7 +1849,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 反转数组，会变更原数组
      *
@@ -1735,7 +1862,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 反转数组，会变更原数组
      *
@@ -1746,7 +1873,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 反转数组，会变更原数组
      *
@@ -1759,7 +1886,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 反转数组，会变更原数组
      *
@@ -1770,7 +1897,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 反转数组，会变更原数组
      *
@@ -1783,7 +1910,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 反转数组，会变更原数组
      *
@@ -1794,7 +1921,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 反转数组，会变更原数组
      *
@@ -1807,7 +1934,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 反转数组，会变更原数组
      *
@@ -1818,7 +1945,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 取最小值
      *
@@ -1830,7 +1957,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 取最小值
      *
@@ -1841,7 +1968,7 @@ public final class ArrayUtil {
         //TODO
         return -1L;
     }
-    
+
     /**
      * 取最小值
      *
@@ -1852,7 +1979,7 @@ public final class ArrayUtil {
         //TODO
         return -1;
     }
-    
+
     /**
      * 取最小值
      *
@@ -1863,7 +1990,7 @@ public final class ArrayUtil {
         //TODO
         return -1;
     }
-    
+
     /**
      * 取最小值
      *
@@ -1874,7 +2001,7 @@ public final class ArrayUtil {
         //TODO
         return '0';
     }
-    
+
     /**
      * 取最小值
      *
@@ -1885,7 +2012,7 @@ public final class ArrayUtil {
         //TODO
         return -1;
     }
-    
+
     /**
      * 取最小值
      *
@@ -1896,7 +2023,7 @@ public final class ArrayUtil {
         //TODO
         return -1D;
     }
-    
+
     /**
      * 取最小值
      *
@@ -1907,7 +2034,7 @@ public final class ArrayUtil {
         //TODO
         return -1F;
     }
-    
+
     /**
      * 取最大值
      *
@@ -1919,7 +2046,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 取最大值
      *
@@ -1930,7 +2057,7 @@ public final class ArrayUtil {
         //TODO
         return -1L;
     }
-    
+
     /**
      * 取最大值
      *
@@ -1941,7 +2068,7 @@ public final class ArrayUtil {
         //TODO
         return -1;
     }
-    
+
     /**
      * 取最大值
      *
@@ -1952,7 +2079,7 @@ public final class ArrayUtil {
         //TODO
         return -1;
     }
-    
+
     /**
      * 取最大值
      *
@@ -1963,7 +2090,7 @@ public final class ArrayUtil {
         //TODO
         return '0';
     }
-    
+
     /**
      * 取最大值
      *
@@ -1974,7 +2101,7 @@ public final class ArrayUtil {
         //TODO
         return -1;
     }
-    
+
     /**
      * 取最大值
      *
@@ -1985,7 +2112,7 @@ public final class ArrayUtil {
         //TODO
         return -1D;
     }
-    
+
     /**
      * 取最大值
      *
@@ -1996,7 +2123,7 @@ public final class ArrayUtil {
         //TODO
         return -1F;
     }
-    
+
     /**
      * 交换数组中两个位置的值
      *
@@ -2009,7 +2136,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 交换数组中两个位置的值
      *
@@ -2022,7 +2149,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 交换数组中两个位置的值
      *
@@ -2035,7 +2162,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 交换数组中两个位置的值
      *
@@ -2048,7 +2175,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 交换数组中两个位置的值
      *
@@ -2061,7 +2188,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 交换数组中两个位置的值
      *
@@ -2074,7 +2201,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 交换数组中两个位置的值
      *
@@ -2087,7 +2214,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 交换数组中两个位置的值
      *
@@ -2100,7 +2227,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 交换数组中两个位置的值
      *
@@ -2114,7 +2241,7 @@ public final class ArrayUtil {
         //TODO
         return null;
     }
-    
+
     /**
      * 交换数组中两个位置的值
      *
