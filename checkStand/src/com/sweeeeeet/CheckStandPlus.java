@@ -13,7 +13,13 @@ public class CheckStandPlus {
         //退出逻辑
     }
     public void about(){
-        //关于信息
+        System.out.println("-------------------- 关于 -----------------------");
+        System.out.println("        名称：简易收银台                         ");
+        System.out.println("        功能：基于字符界面的收银台操作系统       ");
+        System.out.println("        作者: sweeeeeet                          ");
+        System.out.println("        版本: v0.3.0                             ");
+        System.out.println("        意见反馈：自行消化，不接受反驳           ");
+        System.out.println("-------------------------------------------------");
     }
     public void usageInfo(){
         //使用信息
