@@ -29,7 +29,9 @@ public class Order {
     public void add(String goodsId,Integer count){
   int sum;
     //1.判断key是否存在
-        if(orderInfo.containsKey(goodsId))
+        if(orderInfo.containsKey(goodsId)){
+
+        }
         //添加
     }
     public void cancel(String goodsId,Integer count){
