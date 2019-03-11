@@ -383,7 +383,7 @@ public final class ArrayUtil {
                     return true;
                 }
             }
-        return false;
+            return false;
         }
     }
 
@@ -396,9 +396,9 @@ public final class ArrayUtil {
      */
     @SuppressWarnings("unchecked")
     public static <T> T firstNonNull(T... array) {
-        if(array!=null){
-            for(int i=0;i<array.length;i++){
-                if(array[i]!=null){
+        if (array != null) {
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] != null) {
                     return array[i];
                 }
             }
@@ -416,7 +416,7 @@ public final class ArrayUtil {
      */
     @SuppressWarnings("unchecked")
     public static <T> T[] newArray(Class<?> componentType, int newSize) {
-        T[] obj= (T[]) Array.newInstance(componentType,newSize);
+        T[] obj = (T[]) Array.newInstance(componentType, newSize);
         return obj;
     }
 
@@ -429,7 +429,7 @@ public final class ArrayUtil {
      */
     @SuppressWarnings("unchecked")
     public static <T> T[] newArray(int newSize) {
-        T[] obj= (T[]) Array.newInstance(Object.class.getComponentType(),newSize);
+        T[] obj = (T[]) Array.newInstance(Object.class.getComponentType(), newSize);
         return obj;
     }
 
@@ -440,7 +440,7 @@ public final class ArrayUtil {
      * @return 元素类型
      */
     public static Class<?> getComponentType(Object array) {
-       return array.getClass().getComponentType();
+        return array.getClass().getComponentType();
 
     }
 
@@ -479,8 +479,14 @@ public final class ArrayUtil {
      * @throws IllegalArgumentException 参数arrayObj不是数组
      */
     public static Object[] cast(Class<?> type, Object arrayObj) throws NullPointerException, IllegalArgumentException {
-        //TODO
-        return null;
+        Object[] array = new Object[0];
+        if (type != null) {
+            if (arrayObj != null) {
+                array = (Object[]) Array.newInstance(type, 1);
+                array[0] = arrayObj;
+            }
+        }
+        return array;
     }
 
     /**
@@ -494,8 +500,22 @@ public final class ArrayUtil {
      */
     @SafeVarargs
     public static <T> T[] append(T[] buffer, T... newElements) {
-        //TODO
-        return null;
+        int lenth = newElements.length + buffer.length;
+        T[] arrray = (T[]) Array.newInstance(buffer.getClass().getComponentType(), lenth);
+
+        int buff = 0;
+        int ele = 0;
+        for (int i = 0; i < arrray.length; i++) {
+
+            if (i < buffer.length) {
+                arrray[i] = buffer[buff++];
+            }else{
+
+            arrray[i]=newElements[ele++];
+            }
+
+        }
+        return arrray;
     }
 
     /**
