@@ -16,6 +16,10 @@ public class ArrayUtilTest {
         System.out.println(ArrayUtil.isEmpty(objects));;
         System.out.println(ArrayUtil.isEmpty(objects1));;
         System.out.println(ArrayUtil.isEmpty(object));;
+        String[] arrarold={"1","g","m","h","t"};
+      for(String srt:ArrayUtil.append(arrarold,"w","e","e")){
+          System.out.println(srt);
+      }
 
 
     }
