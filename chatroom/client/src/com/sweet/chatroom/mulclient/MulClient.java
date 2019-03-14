@@ -3,13 +3,7 @@ package com.sweet.chatroom.mulclient;
 import com.sun.org.apache.xalan.internal.xsltc.dom.CachedNodeListIterator;
 
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.Socket;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.concurrent.ConcurrentHashMap;
-
 /**
  * Author:sweet
  * Created:2019/3/9
@@ -40,8 +34,10 @@ public class MulClient {
              Socket client=new Socket(host,port);
 
             System.out.println("输入help查看操作指南");
+            System.out.print("请输入>>");
            while(true){
-                WriteDataToServer clientWrite=new WriteDataToServer(client);
+               new WriteDataToServer(client).start();
+               new ReadDataFromServer(client).start();
            }
 
 
@@ -50,6 +46,8 @@ public class MulClient {
             /*
             * 客户端注册：创建Socket给服务端发送注册执行消息
             * */
+
+
             /*
             * 客户端群聊功能：客户端发送和接收消息
             * */
