@@ -33,7 +33,7 @@ public class Goods {
         this.id = id;
     }
 
-    public Goods(String name, double price, String id) {
+    public Goods(String id,String name, double price) {
         this.name = name;
         this.price = price;
         this.id = id;
@@ -41,6 +41,6 @@ public class Goods {
 
     @Override
     public String toString() {
-        return String.format("[%2s] %s %.2f",this.getId(),this.getName(),this.getPrice());
+        return String.format("[%2s]:%s:%.2f\n",this.getId(),this.getName(),this.getPrice());
     }
 }
