@@ -12,8 +12,9 @@ public class CheckStandPlus {
 
 Scanner scanner=new Scanner(System.in);
 
-SimpleGoodsCenter handleGoods=new SimpleGoodsCenter();
-SimpleOrderCerter handlerOrder=new SimpleOrderCerter();
+       private SimpleGoodsCenter handleGoods=new SimpleGoodsCenter();
+       private SimpleOrderCerter handlerOrder=new SimpleOrderCerter();
+        private   Order order;
 /*
 * 进入字符界面收银台，通过键盘输入交互式，进行下一步操作
 *
@@ -25,18 +26,21 @@ SimpleOrderCerter handlerOrder=new SimpleOrderCerter();
         System.out.println("[U]使用\t[S]设置\t[P]保存\t[A]关于\t[Q]退出");
         System.out.println("\t输入\t\tU  S  P  A  Q\t进入操作");
         System.out.println("================================================");
+        handleGoods.load();
         String input=scanner.nextLine();
 
         if("u".equalsIgnoreCase(input)){
+           order =new Order(null);
             usageInfo();
         }if("S".equalsIgnoreCase(input)){
             settingInfo();
         }if("P".equalsIgnoreCase(input)){
-            readGoods();
+                handleGoods.store();
         }if("A".equalsIgnoreCase(input)){
             about();
         }if("Q".equalsIgnoreCase(input)){
             quit();
+
         }else {
             System.out.println("输入格式有误，请重新输入");
             helpInfo();
@@ -46,6 +50,10 @@ SimpleOrderCerter handlerOrder=new SimpleOrderCerter();
 
     public void quit(){
         //退出逻辑
+        System.out.println("*************************************************");
+        System.out.println("                欢迎使用，下次再见                 ");
+        System.out.println("*************************************************");
+        System.exit(0);
     }
     /*
     * 收银台版权信息
@@ -61,16 +69,7 @@ SimpleOrderCerter handlerOrder=new SimpleOrderCerter();
     }
 
 
-    public void usageInfo(){
-        //使用信息
-        SimpleOrderCerter order=new SimpleOrderCerter();
-        System.out.println("*****************************************************************");
-        System.out.println("[A]添加商品\t[D]取消商品\t[L]浏览商品\t[S]查看订单\t[R]返回上级");
-        System.out.println("\t输入\t\tA  D  L  S  R\t进入操作");
-        System.out.println("*****************************************************************");
-        usage();
 
-    }
     public void settingInfo(){
         //设置商品信息
         System.out.println("****************************************************************************");
@@ -80,69 +79,113 @@ SimpleOrderCerter handlerOrder=new SimpleOrderCerter();
         System.out.println("****************************************************************************");
         setting();
     }
-    public void usage(){
-        //使用逻辑
-        String input=scanner.nextLine();
-
-        if("a".equalsIgnoreCase(input)){
-            System.out.println("请按照以下格式输入商品信息：\n商品编号 商品名称 商品价格");
-            String googsInfo=scanner.nextLine();
-             readGoods(googsInfo);
-
-        }if("d".equalsIgnoreCase(input)){
-            //TODO
-        }if("l".equalsIgnoreCase(input)){
-            //TODO
-        }if("s".equalsIgnoreCase(input)){
-            //TODO
-        }if("r".equalsIgnoreCase(input)){
-            helpInfo();
-        }else {
-            System.out.println("输入格式有误，请重新输入");
-            usageInfo();
-        }
-    }
     public void setting(){
         //设置逻辑
         String input=scanner.nextLine();
 
         if("a".equalsIgnoreCase(input)){
-            //TODO
-            System.out.println();
+            //添加商品
+            System.out.println("请按照以下格式输入商品信息：\n商品编号 商品名称 商品价格");
+            String googsInfo=scanner.nextLine();
+            readGoods(googsInfo);
         }if("d".equalsIgnoreCase(input)){
-            //TODO
+            //商品下架
+            System.out.println("请输入商品编号");
+            handleGoods.listGoods();
+            input=scanner.nextLine();
+            handleGoods.removeGoods(input);
         }if("l".equalsIgnoreCase(input)){
-            //TODO
+            //浏览订单
+            handlerOrder.ordersTable();
         }if("s".equalsIgnoreCase(input)){
-            //TODO
+            //查看商品
+            handleGoods.listGoods();
+        }if("u".equalsIgnoreCase(input)){
+            //商品修改
+            handleGoods.listGoods();
+            System.out.println("请按照以下格式输入商品信息：\n商品编号 商品名称 商品价格");
+            input=scanner.nextLine();
+            handleGoods.updateGoods(readGoods(input));
         }if("r".equalsIgnoreCase(input)){
             helpInfo();
         }else {
-            System.out.println("输入格式有误，请重新输入");
-            usageInfo();
+            settingInfo();
+            setting();
         }
     }
-    public void readGoods(String info){
+
+    public void usageInfo(){
+        //使用信息
+
+        System.out.println("*****************************************************************");
+        System.out.println("[A]添加商品\t[D]取消商品\t[L]浏览商品\t[S]查看订单\t[R]返回上级");
+        System.out.println("\t输入\t\tA  D  L  S  R\t进入操作");
+        System.out.println("*****************************************************************");
+        usage();
+       handlerOrder.addOrder(new Order(null));
+    }
+
+    public void usage(){
+        //使用逻辑
+        String input=scanner.nextLine();
+        if("a".equalsIgnoreCase(input)){
+            //用户添加商品
+            System.out.println("请输入商品编号");
+            input=scanner.nextLine();
+                if(handleGoods.isExitGoods(input)){
+                    order.add(input,1);
+
+                }
+        }if("d".equalsIgnoreCase(input)){
+            //用户取消商品
+            System.out.println("请输入商品编号");
+            input=scanner.nextLine();
+            if(handleGoods.isExitGoods(input)){
+                order.cancel(input,1);
+            }
+
+        }if("l".equalsIgnoreCase(input)){
+            //用户浏览商品
+            handleGoods.listGoods();
+        }if("s".equalsIgnoreCase(input)){
+            //查看订单
+            handlerOrder.orderTable(order.getOrderId());
+        }if("r".equalsIgnoreCase(input)){
+            //返回上级
+            System.out.println("是否退出购物?退出后订单将不能修改(yes/no)");
+            input=scanner.nextLine();
+            if(input.equalsIgnoreCase("yes")){
+                handlerOrder.storeOrders();
+                helpInfo();
+            }
+        }else {
+            usageInfo();
+            usage();
+        }
+    }
+    public Goods readGoods(String info){
         //读取商品
+        Goods goods=null;
         if(info!=null){
            String[] strings= info.split(" ");
            if (strings.length==3){
                try{
-
-               double price=Double.parseDouble(strings[3]);
-               Goods goods=new Goods(strings[0],strings[1],price);
+               double price=Double.parseDouble(strings[2]);
+                goods=new Goods(strings[0],strings[1],price);
+               handleGoods.addGoods(goods);
                }catch (ClassCastException e){
                    System.out.println("价格输入错误，请检查重输");
                }
-
-           }else{
-               System.out.println("格式有误，请仔细检查调整格式！");
+           } else{
+               System.out.println("输入有误请检查格式后重输");
            }
         }
+        return goods;
     }
 
     public static void main(String[] args) {
         CheckStandPlus checkStandPlus=new CheckStandPlus();
         checkStandPlus.helpInfo();
+
     }
 }
