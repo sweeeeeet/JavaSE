@@ -1,7 +1,5 @@
 package com.sweeeeeet;
 
-import com.sweeeeeet.Order;
-import com.sweeeeeet.OrderCenter;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -17,37 +15,45 @@ public class SimpleOrderCerter implements OrderCenter {
       private static final   Map<String,Order> orderMap=new HashMap<>();
     @Override
     public void addOrder(Order order) {
-
         orderMap.put(order.getOrderId(),order);
+        System.out.println("订单生成成功,订单编号为:"+order.getOrderId());
     }
 
     @Override
     public void removeOrder(Order order) {
-    order.clear();
+         order.clear();
         orderMap.remove(this);
+        System.out.println("订单删除成功");
     }
 
     @Override
+    //传入指定
     public String orderTable(String id) {
+        SimpleGoodsCenter simpleGoodsCenter=new SimpleGoodsCenter();
+        Goods goods;
        if(orderMap.containsKey(id)){
+       Order order=orderMap.get(id);
+     //orderInfo-->商品编号,商品价格
+    final  Map<String,Integer> orderInfo= order.getOrderInfo();
 
-          // Order order=new Order(id,null);
-           System.out.println("************订单编号"+id+"************");
-       Collection<Order> orders=  orderMap.values();
-           while (orders.iterator().hasNext()){
-               System.out.println(orders.toString());
-
-           }
+          System.out.println("商品编号\t\t商品名称\t\t\t商品价格\t\t\t商品数量\t\t");
+      for(Map.Entry<String,Integer> entry:orderInfo.entrySet()){
+          goods=simpleGoodsCenter.getGoods(entry.getKey());
+          System.out.println(String.format("%s\t\t%s\t\t%.2f\t\t%d",entry.getKey(),goods.getName(),goods.getPrice(),entry.getValue()));
+      }
        }
-
         return id;
     }
 
     @Override
     public String ordersTable() {
+Iterator<String> oderIter=orderMap.keySet().iterator();
+        while (oderIter.hasNext()){
+            String orderId=oderIter.next();
+            System.out.println("***********订单编号为:"+orderId+"***************************");
+            orderTable(orderId);
+            System.out.println();
 
-        while (orderMap.keySet().iterator().hasNext()){
-            System.out.println(orderMap.keySet().iterator().next());
         }
         return "";
     }
