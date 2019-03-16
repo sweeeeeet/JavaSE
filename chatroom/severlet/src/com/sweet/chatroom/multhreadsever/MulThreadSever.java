@@ -3,6 +3,8 @@ package com.sweet.chatroom.multhreadsever;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Map;
+import java.util.concurrent.*;
 
 /**
  * Author:sweet
@@ -12,6 +14,8 @@ import java.net.Socket;
  *
  */
 public class MulThreadSever {
+  //  public static final Map<Socket,String> CLIENT_MAP=new ConcurrentHashMap<>();
+
     public static void main(String[] args) {
         try {
             //1.创建客户端，绑定端口号
@@ -20,12 +24,13 @@ public class MulThreadSever {
             //2.接收客户端连接
             while(true){
            Socket client= sever.accept();
-            System.out.println("客户端已连接上服务端，端口号为"+client.getPort());
 
-            }
            //3.通过线程池分发任务
-
-
+          ExecutorService executorService=  Executors.newFixedThreadPool(5);
+            System.out.println("客户端已连接上服务端，端口号为"+client.getPort());
+            executorService.submit(new HandlerClient(client));
+            }
+            //IO密集型任务=2*nCPU
         } catch (IOException e) {
             e.printStackTrace();
         }
