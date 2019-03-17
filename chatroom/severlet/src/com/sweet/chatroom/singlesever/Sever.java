@@ -3,13 +3,16 @@ package com.sweet.chatroom.singlesever;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Author:sweet
  * Created:2019/3/9
  */
 public class Sever {
+
     public static void main(String[] args) {
         try {
             //1.创建服务端绑定端口
