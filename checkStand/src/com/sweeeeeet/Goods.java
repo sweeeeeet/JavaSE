@@ -5,6 +5,8 @@ package com.sweeeeeet;
  * Created:2019/1/19
  */
 public class Goods {
+
+
     private String name;
     private double price;
     private String id;
@@ -38,9 +40,8 @@ public class Goods {
         this.price = price;
         this.id = id;
     }
-
     @Override
     public String toString() {
-        return String.format("[%2s]:%s:%.2f\n",this.getId(),this.getName(),this.getPrice());
+        return this.id+":"+name+":"+price;
     }
 }
