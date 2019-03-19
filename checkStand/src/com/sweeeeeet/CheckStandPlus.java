@@ -30,7 +30,9 @@ Scanner scanner=new Scanner(System.in);
         String input=scanner.nextLine();
 
         if("u".equalsIgnoreCase(input)){
-           order =new Order(null);
+
+            order =new Order(null);
+            handlerOrder.addOrder(this.order);
             usageInfo();
         }if("S".equalsIgnoreCase(input)){
             settingInfo();
@@ -91,18 +93,18 @@ Scanner scanner=new Scanner(System.in);
         }if("d".equalsIgnoreCase(input)){
             //商品下架
             System.out.println("请输入商品编号");
-            handleGoods.listGoods();
+            System.out.println(handleGoods.listGoods());;
             input=scanner.nextLine();
             handleGoods.removeGoods(input);
         }if("l".equalsIgnoreCase(input)){
             //浏览订单
-            handlerOrder.ordersTable();
+            System.out.println(handlerOrder.ordersTable());;
         }if("s".equalsIgnoreCase(input)){
             //查看商品
-            handleGoods.listGoods();
+            System.out.println( handleGoods.listGoods());;
         }if("u".equalsIgnoreCase(input)){
             //商品修改
-            handleGoods.listGoods();
+            System.out.println(handleGoods.listGoods());;
             System.out.println("请按照以下格式输入商品信息：\n商品编号 商品名称 商品价格");
             input=scanner.nextLine();
             handleGoods.updateGoods(readGoods(input));
@@ -121,11 +123,12 @@ Scanner scanner=new Scanner(System.in);
         System.out.println("[A]添加商品\t[D]取消商品\t[L]浏览商品\t[S]查看订单\t[R]返回上级");
         System.out.println("\t输入\t\tA  D  L  S  R\t进入操作");
         System.out.println("*****************************************************************");
+
         usage();
-       handlerOrder.addOrder(new Order(null));
     }
 
     public void usage(){
+
         //使用逻辑
         String input=scanner.nextLine();
         if("a".equalsIgnoreCase(input)){
@@ -134,7 +137,6 @@ Scanner scanner=new Scanner(System.in);
             input=scanner.nextLine();
                 if(handleGoods.isExitGoods(input)){
                     order.add(input,1);
-
                 }
         }if("d".equalsIgnoreCase(input)){
             //用户取消商品
@@ -146,16 +148,22 @@ Scanner scanner=new Scanner(System.in);
 
         }if("l".equalsIgnoreCase(input)){
             //用户浏览商品
-            handleGoods.listGoods();
+            System.out.println(handleGoods.listGoods());;
         }if("s".equalsIgnoreCase(input)){
             //查看订单
-            handlerOrder.orderTable(order.getOrderId());
+            if(this.order!=null){
+                System.out.println( handlerOrder.orderTable(order.getOrderId()));;
+            }else{
+                System.out.println("请先添加商品！！");
+            }
         }if("r".equalsIgnoreCase(input)){
             //返回上级
-            System.out.println("是否退出购物?退出后订单将不能修改(yes/no)");
+            System.out.println("是否保存订单并退出购物?退出后订单将不能修改(yes/no)");
             input=scanner.nextLine();
             if(input.equalsIgnoreCase("yes")){
                 handlerOrder.storeOrders();
+                helpInfo();
+            }else{
                 helpInfo();
             }
         }else {
@@ -172,7 +180,11 @@ Scanner scanner=new Scanner(System.in);
                try{
                double price=Double.parseDouble(strings[2]);
                 goods=new Goods(strings[0],strings[1],price);
+               if(!handleGoods.isExitGoods(strings[0])){
                handleGoods.addGoods(goods);
+               }else {
+                   System.out.println("商品编号重复！");
+               }
                }catch (ClassCastException e){
                    System.out.println("价格输入错误，请检查重输");
                }
