@@ -35,10 +35,10 @@ public class MulClient {
 
             System.out.println("输入help查看操作指南");
             System.out.print("请输入>>");
-           while(true){
+
                new WriteDataToServer(client).start();
                new ReadDataFromServer(client).start();
-           }
+
 
 
 
