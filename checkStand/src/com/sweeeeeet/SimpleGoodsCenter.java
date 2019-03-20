@@ -12,9 +12,11 @@ import java.util.Set;
 public class SimpleGoodsCenter implements GoodsCenter {
     private static final Map<String, Goods> goodsMap = new HashMap<>();
 
+
     @Override
     public void addGoods(Goods goods) {
         if (goods != null) {
+
             this.goodsMap.put(goods.getId(), goods);
             System.out.println("商品添加成功!");
         }
@@ -43,7 +45,7 @@ public class SimpleGoodsCenter implements GoodsCenter {
     @Override
     public void updateGoods(Goods goods) {
         if (goods != null) {
-            goodsMap.put(goods.getId(), goods);
+            goodsMap.replace(goods.getId(), goods);
             System.out.println("商品更改成功!");
         }
     }
@@ -65,13 +67,17 @@ public class SimpleGoodsCenter implements GoodsCenter {
         //打印商品信息StingBuilder  append
         //遍历Map--> Map.Entry
         System.out.println();
-        System.out.println("\t商品编号\t\t商品名称\t\t商品价格\t\t");
+        StringBuilder stringBuilder=new StringBuilder();
+       // System.out.println("\t商品编号\t\t商品名称\t\t商品价格\t\t");
+        stringBuilder.append("\t商品编号\t\t商品名称\t\t商品价格\t\t\n");
         for (Map.Entry<String, Goods> entry : goodsMap.entrySet()) {
             Goods goods = entry.getValue();
-            System.out.println(String.format("\t%s\t\t%s\t\t%.2f\n",
+//            System.out.println(String.format("\t%s\t\t%s\t\t%.2f\n",
+//                    goods.getId(), goods.getName(), goods.getPrice()));
+            stringBuilder.append(String.format("\t%s\t\t%s\t\t%.2f\n",
                     goods.getId(), goods.getName(), goods.getPrice()));
         }
-        return "";
+        return String.valueOf(stringBuilder);
     }
 //当前存储在文件中
     // private String filePath=System.getProperty("user.dir")+File.separator+"goods.txt";
@@ -86,7 +92,8 @@ public class SimpleGoodsCenter implements GoodsCenter {
             Writer writeGoods = new FileWriter(file);
             BufferedWriter bufferedWriter = new BufferedWriter(writeGoods);
             for (Map.Entry<String, Goods> goods : goodsMap.entrySet()) {
-                bufferedWriter.write(goods.getKey()+"\t\t"+goods.getValue()+"\t\t"+ "\n");
+                bufferedWriter.write(goods.getValue()+"\t\t"+ "\n");
+
                 bufferedWriter.flush();
             }
         } catch (IOException e) {
