@@ -25,8 +25,8 @@ public class ReadDataFromServer extends Thread {
         Scanner scanner=new Scanner(clientread);
        while (true){
            String message=scanner.nextLine();
-           String sendPerson="服务器";
-           System.out.println("来自服务器消息："+message);
+           System.out.println(message);
+           System.out.print("请输入>>");
        }
         } catch (IOException e) {
             e.printStackTrace();
