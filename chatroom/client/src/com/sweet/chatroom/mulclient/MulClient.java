@@ -32,10 +32,6 @@ public class MulClient {
             }
             //创建用户Socket
              Socket client=new Socket(host,port);
-
-            System.out.println("输入help查看操作指南");
-            System.out.print("请输入>>");
-
                new WriteDataToServer(client).start();
                new ReadDataFromServer(client).start();
 
