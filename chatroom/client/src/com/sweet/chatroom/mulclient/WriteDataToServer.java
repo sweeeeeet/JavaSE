@@ -27,20 +27,14 @@ public class WriteDataToServer extends Thread{
             OutputStream clientout = client.getOutputStream();
         OutputStreamWriter clientwrite=new OutputStreamWriter(clientout);
         Scanner scanner=new Scanner(System.in);
+            System.out.println("输入help查看操作指南");
      while(true) {
          String message;
+
          message = scanner.nextLine();
          clientwrite.write(message + "\n");
-         clientout.flush();
+         clientwrite.flush();
 
-
-//          if (message.startsWith("group")) {
-//             System.out.println("【发送消息给所有用户】" + message.split(":")[1]);
-//         } else if (message.startsWith("privateChat")) {
-//             System.out.println("【发送消息给所有用户】" + message.split(":")[2]);
-//         } else {
-//             System.out.println("【发消息给客户端】" + message);
-//         }
      }
         } catch (IOException e) {
             e.printStackTrace();
