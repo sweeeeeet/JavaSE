@@ -17,7 +17,7 @@ public class HandlerClient implements Runnable{
    * 维护所有的连接到服务端连接到客户端的对象
    * 希望所有的用户都装进同一个Map中，因此将并发的MAP设为静态不可变的。
    * */
-private final Socket client;
+    private  Socket client;
    private static final Map<String,Socket> ONLINE_CLIENT_MAP=new ConcurrentHashMap<>();
    public HandlerClient(Socket client) {
       this.client = client;
@@ -40,33 +40,36 @@ private final Socket client;
             System.out.println("退出功能请输入------bye");*/
                if(message.startsWith("register:")){
                    String userName=message.split(":")[1];
-                   register(userName);
+                   this.register(userName);
                    continue;
                }
                if(message.startsWith("group")){
                    String talk=message.split(":")[1];
-                   groupChat(talk);
+                   this.groupChat(talk);
                    continue;
                }
                if(message.startsWith("privateChat")){
                    String[] segments=message.split(":");
                    String targetUserName=segments[1];
                    String information=segments[2];
-                   privateChat(targetUserName,information);
+                   this.privateChat(targetUserName,information);
                    continue;
                }
                if(message.startsWith("bye")){
-                   bye();
+                   this.bye();
                    continue;
                }
                if (message.startsWith("help")) {
-                  sendMessage("注册功能请输入------register:<UserName>\n" +
-                          "群聊功能请输入------group:[Something you wants to say...]\n"
-                          +"私聊功能请输入------privateChat:<UserName>:[Something you wants to say]\n"
-                          +"退出功能请输入------bye",this.client,true);
+                   StringBuilder stringBuilder=new StringBuilder();
+                   stringBuilder.append("\n注册功能请输入------register:<UserName>\n")
+                           .append("群聊功能请输入------group:[Something you wants to say...]\n")
+                           .append("私聊功能请输入------privateChat:<UserName>:[Something you wants to say]\n")
+                           .append("退出功能请输入------bye\n");
+                  this.sendMessage(String.valueOf(stringBuilder) ,this.client,true);
                }
                else{
-                   System.out.println("请检查输入正确的格式");
+                   String err="请检查输入正确的格式";
+                this.sendMessage(err,this.client,true);
                }
            }
 
@@ -97,7 +100,7 @@ private final Socket client;
     if(target==null){
         this.sendMessage("没有这个人",this.client,true);
     }else{
-        this.sendMessage(information,target,true);
+        this.sendMessage(information,target,false);
     }
     }
 
@@ -111,9 +114,9 @@ private final Socket client;
        Socket target=entry.getValue();
        if(target.equals(this.client)){
            continue;
+       }else{
+       sendMessage(talk,target,false);
        }
-       sendMessage(talk,this.client,true);
-
    }
    }
 
@@ -124,7 +127,7 @@ private final Socket client;
     private void register(String userName) {
     ONLINE_CLIENT_MAP.put(userName,this.client);
     printOnlineClient();
-       sendMessage("恭喜"+userName+"注册成功",this.client,false);
+    sendMessage("恭喜"+userName+"注册成功",this.client,true);
     }
 private  void printOnlineClient(){
     System.out.println("当前在线人数"+ONLINE_CLIENT_MAP.size()+"用户如下列表");
@@ -137,10 +140,26 @@ private void sendMessage(String message,Socket target,boolean isSever){
     try {
         OutputStream outputStream= target.getOutputStream();
         OutputStreamWriter outputStreamWriter=new OutputStreamWriter(outputStream);
-        outputStreamWriter.write(message);
+            String sendPerson="服务器";
+        if(isSever){
+        outputStreamWriter.write(sendPerson+"消息]："+message+"\n");
+        }else{
+            sendPerson=this.getCurrentName();
+        outputStreamWriter.write("来自"+sendPerson+"消息]："+message+"\n");
+        }
         outputStreamWriter.flush();
     } catch (IOException e) {
         e.printStackTrace();
     }
 }
+
+    private String getCurrentName() {
+        for(Map.Entry<String,Socket> entry:ONLINE_CLIENT_MAP.entrySet()){
+            if(this.client==entry.getValue()){
+            String name=entry.getKey();
+            return name;
+            }
+        }
+        return "";
+        }
 }
