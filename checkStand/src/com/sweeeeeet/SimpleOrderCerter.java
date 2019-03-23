@@ -1,10 +1,7 @@
 package com.sweeeeeet;
 
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -12,16 +9,17 @@ import java.util.*;
  * Created:2019/1/19
  */
 public class SimpleOrderCerter implements OrderCenter {
-      private static final   Map<String,Order> orderMap=new HashMap<>();
+    private static final Map<String, Order> orderMap = new HashMap<>();
+
     @Override
     public void addOrder(Order order) {
-        orderMap.put(order.getOrderId(),order);
-        System.out.println("订单生成成功,订单编号为:"+order.getOrderId());
+        orderMap.put(order.getOrderId(), order);
+        System.out.println("订单生成成功,订单编号为:" + order.getOrderId());
     }
 
     @Override
     public void removeOrder(Order order) {
-         order.clear();
+        order.clear();
         orderMap.remove(this);
         System.out.println("订单删除成功");
     }
@@ -29,54 +27,52 @@ public class SimpleOrderCerter implements OrderCenter {
     @Override
     //传入指定
     public String orderTable(String id) {
-        SimpleGoodsCenter simpleGoodsCenter=new SimpleGoodsCenter();
+        SimpleGoodsCenter simpleGoodsCenter = new SimpleGoodsCenter();
+        StringBuilder stringBuilder = new StringBuilder();
         Goods goods;
-       if(orderMap.containsKey(id)){
-       Order order=orderMap.get(id);
-     //orderInfo-->商品编号,商品价格
-    final  Map<String,Integer> orderInfo= order.getOrderInfo();
-
-          System.out.println("商品编号\t\t商品名称\t\t\t商品价格\t\t\t商品数量\t\t");
-      for(Map.Entry<String,Integer> entry:orderInfo.entrySet()){
-          goods=simpleGoodsCenter.getGoods(entry.getKey());
-          System.out.println(String.format("%s\t\t%s\t\t%.2f\t\t%d",entry.getKey(),goods.getName(),goods.getPrice(),entry.getValue()));
-      }
-       }
-        return id;
+        if (orderMap.containsKey(id)) {
+            Order order = orderMap.get(id);
+            //orderInfo-->商品编号,商品价格
+            final Map<String, Integer> orderInfo = order.getOrderInfo();
+            stringBuilder.append("商品编号\t\t商品名称\t\t\t商品价格\t\t\t商品数量\t\t\n");
+          double sum=0d;
+            for (Map.Entry<String, Integer> entry : orderInfo.entrySet()) {
+                goods = simpleGoodsCenter.getGoods(entry.getKey());
+                stringBuilder.append(String.format("%s\t\t%s\t\t%.2f\t\t%d\n", entry.getKey(), goods.getName(), goods.getPrice(), entry.getValue()));
+                 sum+=goods.getPrice()*entry.getValue();
+            }
+                stringBuilder.append("总计金额："+sum+"\n");
+        }
+        return String.valueOf(stringBuilder);
     }
 
     @Override
     public String ordersTable() {
-Iterator<String> oderIter=orderMap.keySet().iterator();
-        while (oderIter.hasNext()){
-            String orderId=oderIter.next();
-            System.out.println("***********订单编号为:"+orderId+"***************************");
-            orderTable(orderId);
+        StringBuilder stringBuilder = new StringBuilder();
+        Iterator<String> oderIter = orderMap.keySet().iterator();
+        while (oderIter.hasNext()) {
+            String orderId = oderIter.next();
+            stringBuilder.append("*******************订单编号为:" + orderId + "***************************\n");
+            stringBuilder.append(orderTable(orderId));
+
             System.out.println();
 
         }
-        return "";
+        return String.valueOf(stringBuilder);
     }
 
 
+    //  private String filePath=System.getProperty("user.dir")+File.separator+"orderInfo.txt";
+    File file = new File("D:\\TL-BITE\\JAVA\\java_examples\\checkStand\\src\\com\\sweeeeeet\\orderInfo.txt");
 
-  //  private String filePath=System.getProperty("user.dir")+File.separator+"orderInfo.txt";
-    File file=new File("D:\\TL-BITE\\JAVA\\java_examples\\checkStand\\src\\com\\sweeeeeet\\orderInfo.txt");
     @Override
     public void storeOrders() {
         try {
-            FileWriter fileWriter=new FileWriter(file);
-        BufferedWriter bufferedWriter=new BufferedWriter(fileWriter);
-      Iterator orderIterator=  orderMap.keySet().iterator();
-        Iterator iteratorMessage=orderMap.values().iterator();
-       while (orderIterator.hasNext()){
-           bufferedWriter.write("订单编号："+orderIterator.next()+"\n");
-           bufferedWriter.flush();
-           while (iteratorMessage.hasNext()){
-               bufferedWriter.write(iteratorMessage.next()+"\n");
-               bufferedWriter.flush();
-           }
-       }
+            FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(ordersTable());
+            bufferedWriter.write("*****************************************\n");
+            bufferedWriter.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -84,6 +80,13 @@ Iterator<String> oderIter=orderMap.keySet().iterator();
 
     @Override
     public void loadOrders() {
-
+        File file = new File("D:\\TL-BITE\\JAVA\\java_examples\\checkStand\\src\\com\\sweeeeeet\\orderInfo.txt");
+        try {
+           Reader reader=new FileReader(file);
+           Scanner scanner=new Scanner(reader);
+            System.out.println(scanner.nextLine());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
