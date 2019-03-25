@@ -64,10 +64,9 @@ public class HandlerClient implements Runnable{
                    stringBuilder.append("\n注册功能请输入------register:<UserName>\n")
                            .append("群聊功能请输入------group:[Something you wants to say...]\n")
                            .append("私聊功能请输入------privateChat:<UserName>:[Something you wants to say]\n")
-                           .append("退出功能请输入------bye\n");
+                           .append("退出功能请输入------bye");
                   this.sendMessage(String.valueOf(stringBuilder) ,this.client,true);
-               }
-               else{
+               } else{
                    String err="请检查输入正确的格式";
                 this.sendMessage(err,this.client,true);
                }
@@ -113,6 +112,7 @@ public class HandlerClient implements Runnable{
 
        Socket target=entry.getValue();
        if(target.equals(this.client)){
+           sendMessage("发送成功",this.client,false);
            continue;
        }else{
        sendMessage(talk,target,false);
@@ -143,7 +143,7 @@ private void sendMessage(String message,Socket target,boolean isSever){
             String sendPerson="服务器";
         if(isSever){
         outputStreamWriter.write(sendPerson+"消息]："+message+"\n");
-        }else{
+        }else if(! isSever){
             sendPerson=this.getCurrentName();
         outputStreamWriter.write("来自"+sendPerson+"消息]："+message+"\n");
         }
