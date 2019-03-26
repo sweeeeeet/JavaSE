@@ -8,10 +8,22 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class EMPAction {
     private EMP p=new EMP();
-    public void setEMP(String value) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        BeanOperation.setBeanValue(p,"emp.name:lihua|emp.job:C");
+    public void setEMP(String value) {
+        try {
+            BeanOperation.setBeanValue(this,value);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }
     }
-    public void getEMP() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-        BeanOperation.setBeanValue(p,"emp.name:lihua|emp.job:C");
+    public EMP getEMP(){
+        return p;
     }
 }
