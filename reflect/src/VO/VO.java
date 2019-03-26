@@ -1,5 +1,7 @@
 package VO;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * Author:sweet
  * Created:2019/1/16
@@ -35,6 +37,8 @@ package VO;
 }
 public class VO{
     public static void main(String[] args) {
-
+        EMPAction empAction=new EMPAction();
+        empAction.setEMP("emp.name:lihua|emp.job:C");
+        empAction.getEMP();
     }
 }
