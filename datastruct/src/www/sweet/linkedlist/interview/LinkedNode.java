@@ -81,13 +81,28 @@ public class LinkedNode {
      * @Param: LinkedNode pre=null;LinkedNode cur=head;LinkedNode next=cur.next;
      * @return:
      */
-public LinkedNode reverseList2(LinkedNode head){
-    LinkedNode pre=null;
-    LinkedNode cur=head;
-    LinkedNode next=cur.next;
-}
+    public LinkedNode reverseList2(LinkedNode head) {
+
+        if (head == null) {
+            return null;
+        }
+        LinkedNode pre = null;
+        LinkedNode cur = head;
+        //1-2-3-4-2-3
+       // p c n
+        //3-2-1-null
+        while (cur != null) {
+        LinkedNode next = cur.next;
+            //逆置的过程
+            cur.next = pre;
+            pre = cur;
+            //循环向后走的条件
+            cur = next;
 
 
+        }
+        return pre;
+    }
 
 
     /**
@@ -109,8 +124,8 @@ public LinkedNode reverseList2(LinkedNode head){
 
         while (cur1 != null && cur2 != null) {
             if (cur1.value >= cur2.value) {
-                LinkedNode next=cur2.next;
-                cur2.next=null;
+                LinkedNode next = cur2.next;
+                cur2.next = null;
                 //取值小的(cur2)尾插操作
                 if (result == null) {
                     result = cur2;
@@ -120,8 +135,8 @@ public LinkedNode reverseList2(LinkedNode head){
                 last = result;
                 cur2 = next;
             } else {
-                LinkedNode next=cur1.next;
-                cur1.next=null;
+                LinkedNode next = cur1.next;
+                cur1.next = null;
                 if (result == null) {
                     result = cur1;
                 } else {
@@ -135,115 +150,188 @@ public LinkedNode reverseList2(LinkedNode head){
     }
 
     /**
-    * @Description:  以给定x为基准将链表分割为两部分，
-     *                所有小于x的节点排在大于或=x的节点前，节点的排列顺序不改变
-     *
+     * @Description: 以给定x为基准将链表分割为两部分，
+     * 所有小于x的节点排在大于或=x的节点前，节点的排列顺序不改变
+     * <p>
      * 解决思路：定义两个链表：遍历原链表，小于x的节点就放在小的新链表中，
      * 大于=x的就放在大的链表中，再把两个链表链接即可
-    */
+     */
 
-    public LinkedNode partation(LinkedNode pHead,int x){
-        LinkedNode small=null;
-        LinkedNode smallLast=null;
-        LinkedNode big=null;
-        LinkedNode bigLast=null;
-        LinkedNode cur=pHead;
-        while(cur!=null){
-            LinkedNode next=cur.next;
-            if(cur.value<x){
+    public LinkedNode partation(LinkedNode pHead, int x) {
+        LinkedNode small = null;
+        LinkedNode smallLast = null;
+        LinkedNode big = null;
+        LinkedNode bigLast = null;
+        LinkedNode cur = pHead;
+        while (cur != null) {
+            LinkedNode next = cur.next;
+            if (cur.value < x) {
                 //保证尾插的最后一个节点的next为空
-                cur.next=null;
+                cur.next = null;
                 //如果小链表没有头节点，当前就是小链表的头节点
-                if(small==null){
-                    small=cur;
-                }else{
+                if (small == null) {
+                    small = cur;
+                } else {
                     //否则就就最后一个节点的下一个，即尾插
-                    smallLast.next=cur;
+                    smallLast.next = cur;
                 }
-                smallLast=cur;
-                cur=next;
+                smallLast = cur;
+                cur = next;
 
-            }else{
-                cur.next=null;
-                if(big==null){
-                    big=cur;
-                }else{
-                    bigLast.next=cur;
+            } else {
+                cur.next = null;
+                if (big == null) {
+                    big = cur;
+                } else {
+                    bigLast.next = cur;
                 }
-                bigLast=cur;
-                cur=next;
+                bigLast = cur;
+                cur = next;
             }
         }
         //将大链表尾插到小链表中{ 1.small为null ||  2.big为null}
-        LinkedNode result=null;
-        if(small==null){
-        return big;
-        }else{
-            smallLast.next=big;
+        LinkedNode result = null;
+        if (small == null) {
+            return big;
+        } else {
+            smallLast.next = big;
             return small;
         }
     }
 
 
     /**
-    * @Description: 给定一个带有节点head的链表，返回链表的之间节点，如果有两个节点，取第二个节点
-    * 解决：双指针遍历：一个指针跑两步，另一个指针只跑一步，
+     * @Description: 给定一个带有节点head的链表，返回链表的之间节点，如果有两个节点，取第二个节点
+     * 解决：双指针遍历：一个指针跑两步，另一个指针只跑一步，
      * 因此快的指针走到null节点（末尾）了，慢的指针正好在链表之间
-    *
-    */
-    public LinkedNode middleNode(LinkedNode head){
-        LinkedNode fast=head;
-        LinkedNode slow=head;
-        while(fast!=null){
-            fast=fast.next;
-            if(fast==null){
+     */
+    public LinkedNode middleNode(LinkedNode head) {
+        LinkedNode fast = head;
+        LinkedNode slow = head;
+        while (fast != null) {
+            fast = fast.next;
+            if (fast == null) {
                 break;
             }
-            slow=slow.next;
+            slow = slow.next;
             //fast走了两步，slow只走了一步，
             // 并且保证若是偶数个节点，慢指针值向的是中间的后一个节点
-            fast=fast.next;
+            fast = fast.next;
         }
         return slow;
     }
 
 
     /**
-    * @Description: 在非空单链表中找指定倒数第K个节点
-    *解决：定义一前以后两个节点，先让前一个节点先走K步，然后一起前进，
+     * @Description: 在非空单链表中找指定倒数第K个节点
+     * 解决：定义一前以后两个节点，先让前一个节点先走K步，然后一起前进，
      * 当前面的节点走到null，则就是倒数第K个节点
      * 考虑特殊情况{链表正好有m个节点，1.指定k大于m: 2.k等于m}
      * 1-2-3-4-5
-    * @return:
-    */
+     * @return:
+     */
 
-    public LinkedNode findKthNode(LinkedNode head,int k){
-        LinkedNode front=head;
-        LinkedNode back=head;
-        int i=0;
-        for(i=0;i<k;i++){
-            front=front.next;
+    public LinkedNode findKthNode(LinkedNode head, int k) {
+        LinkedNode front = head;
+        LinkedNode back = head;
+        int i = 0;
+        for (i = 0; i < k; i++) {
+            front = front.next;
         }
         //如果链表有5个节点，要找倒数第六个
-        if(front==null&&i<k){
+        if (front == null && i < k) {
             return null;
             //如果链表有5个节点，要找倒数第五个
-        }else if(front==null){
+        } else if (front == null) {
             return head;
         }
 
-        while (front!=null){
-            front=front.next;
-            back=back.next;
+        while (front != null) {
+            front = front.next;
+            back = back.next;
         }
         return back;
     }
 
     /**
-    * @Description: 对于一个链表，设计一个时间复杂度为O（N），额外空间复杂度为O（1）的算法，
-     *              判断其是否为回文结构 （ABCCBA）
-    *
-    * @return:
-    */
+     * @Description: 对于一个链表，设计一个时间复杂度为O（N），额外空间复杂度为O（1）的算法，
+     * 判断其是否为回文结构 （ABCCBA）
+     * 解决：遍历链表，得到链表长度，然后找到中间节点，将中间节点以后的链表逆置，
+     * 再与新链表逐个比较，一旦有不同的节点就说明不是回文
+     */
+
+    public boolean chkPalindrome(LinkedNode A) {
+        LinkedNode middle = A;
+        int len = getLenght(A);
+        for (int i = 0; i < len / 2; i++) {
+            //得到之间节点
+            middle = middle.next;
+        }
+        middle = reversList(middle);
+        while (A != null && middle != null) {
+            if (A.value != middle.value) {
+                return false;
+            }
+            A = A.next;
+            middle = middle.next;
+        }
+
+        return true;
+    }
+
+    private int getLenght(LinkedNode a) {
+        int len = 0;
+        while (a != null) {
+            len++;
+            a = a.next;
+        }
+        return len;
+    }
+
+    /**
+     * @Description: 在一个排序链表中，存在重复的节点，删除链表中重复的节点，
+     * 重复的节点不保留，返回链表头指针
+     * 解决：两个指针一前一后，若不相等则一起向前走，
+     * 若相等，则前面的节点继续向前走，走到不相等或为空为止，将第二个节点尾插到第一个节点
+     * 还需引入一个prev=null,申请一个假节点dummy，作为处理后的链表的头节点
+     * @return: dummy.next
+     */
+
+    public LinkedNode deleteDuplication(LinkedNode head) {
+        //p1,p2是进行比较的两个节点
+        LinkedNode p1 = head;
+        LinkedNode p2 = head.next;
+        //假节点用来消除第一个节点没有前驱的特殊性（如果第一个节点开始就重复便无法处理）
+        LinkedNode dummy = new LinkedNode(0);
+        dummy.next = head;
+        //pre永远是p1的前一个，用来删除节点
+        LinkedNode pre = dummy;
+        //1-2-3-4-4-4-5-6
+        //如果值不相等则往前走
+
+        if (head == null) {
+            return null;
+        }
+        while (p2 != null) {
+            //因为有序，p1和p2不相等，和p2的next更不会相等，因此比较可以向前继续
+            if (p1.value != p2.value) {
+                pre = pre.next;
+                p1 = p1.next;
+                p2 = p2.next;
+            } else {
+                //若果相等则p2向前走，走到不相等为止
+                while (p2.value == p1.value) {
+                    p2 = p2.next;
+                }
+                //将p2指向的节点尾插到pre上
+                pre.next = p2;
+
+                p1 = p2;
+                p2 = p2.next;
+
+            }
+        }
+        return dummy.next;
+    }
 }
 
