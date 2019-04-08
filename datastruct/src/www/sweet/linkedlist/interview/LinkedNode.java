@@ -119,8 +119,8 @@ public class LinkedNode {
         }
         LinkedNode cur1 = l1;
         LinkedNode cur2 = l2;
-        LinkedNode result = null;
         LinkedNode last = null;
+        LinkedNode result = null;
 
         while (cur1 != null && cur2 != null) {
             if (cur1.value >= cur2.value) {
