@@ -46,7 +46,6 @@ public class MyLink implements ILinkedList {
             System.out.println("链表已为空");
             return;
         } else {
-
                 this.head=this.head.next;
         }
     }
@@ -86,8 +85,8 @@ public class MyLink implements ILinkedList {
         if (this.head == null) {
             return;
         } else {
-            if(this.head==null){
-                return;
+            if(this.head.next==null){
+               this.head=null;
             }else{
             //找到倒数第二个节点
             Node last2=gatLast2();
@@ -108,18 +107,17 @@ public class MyLink implements ILinkedList {
     }
 
     public static void main(String[] args) {
-        MyLink.Node node=new Node(1);
         MyLink myLink=new MyLink();
         myLink.pushFront(2);
         myLink.pushFront(3);
-        myLink.pushBack(8);
-        myLink.pushBack(0);
-        myLink.pushBack(4);
-        myLink.popBack();
-       // myLink.popFront();
+        myLink.popBack();//3
+        myLink.pushBack(8);//38
+        myLink.popFront();//8
+        myLink.pushBack(0);//80
+        myLink.pushBack(4);//804
         Node cur=myLink.head;
         while(cur!=null){
-            System.out.println(myLink.head.item);
+            System.out.println(cur.item);
             cur=cur.next;
         }
     }
