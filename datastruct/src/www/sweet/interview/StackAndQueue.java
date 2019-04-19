@@ -10,8 +10,16 @@ import java.util.Stack;
 public class StackAndQueue {
 
     public static void main(String[] args) {
-        StackAndQueue test = new StackAndQueue();
-        test.isValid("(4+5)+[45]");
+        MyQueue myQueue = new MyQueue();
+        myQueue.push(12);
+        myQueue.push(11);
+        myQueue.push(10);
+        System.out.println(myQueue.pop());
+        ;
+        System.out.println(myQueue.peek());
+        ;
+        System.out.println(myQueue.empty());
+        ;
     }
 
     /**
@@ -25,9 +33,9 @@ public class StackAndQueue {
      */
     public boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();
-        for(int i=0;i<s.length();i++){
-            char ch=s.charAt(i);
-            switch (ch){
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            switch (ch) {
                 case '(':
                 case '{':
                 case '[':
@@ -35,22 +43,22 @@ public class StackAndQueue {
                     break;
                 case ')':
                 case ']':
-                case '}':{
-                    if(stack.empty()){
+                case '}': {
+                    if (stack.empty()) {
                         return false;
-                    }else{
-                        char left=stack.pop();
-                        if(!(left=='(' && ch==')' ||left=='[' && ch==']'
-                                ||left=='{' && ch=='}')){
+                    } else {
+                        char left = stack.pop();
+                        if (!(left == '(' && ch == ')' || left == '[' && ch == ']'
+                                || left == '{' && ch == '}')) {
                             return false;
                         }
                         break;
                     }
                 }
-                default: break;
+                default:
+                    break;
             }
         }
-
 
 
         //字符串遍历结束，如果栈中还有元素 说明也不匹配
@@ -69,6 +77,7 @@ public class StackAndQueue {
      * @return:
      */
     class MyStack {
+
         private LinkedList<Integer> stack = new LinkedList<>();
 
 
@@ -94,12 +103,8 @@ public class StackAndQueue {
          */
         public int pop() {
 //出栈:后进先出《----》队列中的最后一个元素
-
-            if(stack.size()!=0){
-
-
-           return stack.remove(0);
-
+            if (stack.size() != 0) {
+                return stack.remove(0);
             }
             return 0;
         }
@@ -109,7 +114,7 @@ public class StackAndQueue {
          */
         public int top() {
             //栈顶元素就是后入队列的元素
-            if(stack.size()!=0){
+            if (stack.size() != 0) {
                 return stack.get(0);
             }
             return 0;
@@ -119,8 +124,8 @@ public class StackAndQueue {
          * Returns whether the stack is empty.
          */
         public boolean empty() {
-            if (stack.size()==0) {
-            return true;
+            if (stack.size() == 0) {
+                return true;
             }
             return false;
         }
@@ -135,7 +140,70 @@ public class StackAndQueue {
  * 然后遍历，导入另一个栈，此时的元素顺序就是进栈的顺序了
  * 若要继续push元素，在第一个栈中添加元素，如果第二个栈还有元素则出，
  * 如果没有了就再次将第一个栈元素导入第二个元素
- * @return:
+ */
+
+class MyQueue {
+    /**
+     * Initialize your data structure here.
+     */
+    private Stack<Integer> stackIn = new Stack();
+    private Stack<Integer> stackOut = new Stack();
+
+    public MyQueue() {
+
+    }
+
+    /**
+     * Push element x to the back of queue.
+     */
+    public void push(int x) {
+        stackIn.push(x);
+    }
+
+    /**
+     * Removes the element from in front of queue and returns that element.
+     */
+    public int pop() {
+        //利用两个栈，两次入栈操作就还原了入栈时本身的时间顺序
+        //如果OUt栈为空了就入新的元素进来
+        pushEle();
+
+        return stackOut.pop();
+    }
+
+    /**
+     * Get the front element.
+     */
+    public int peek() {
+
+        pushEle();
+
+        return stackOut.peek();
+
+    }
+
+    /**
+     * Returns whether the queue is empty.
+     */
+    public boolean empty() {
+        if (stackOut.empty()) {
+            if (stackIn.empty()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void pushEle() {
+        if (stackOut.empty()) {
+            while (!stackIn.empty()) {
+                stackOut.push(stackIn.pop());
+            }
+        }
+    }
+}
+
+/**
  * @Description: 最小栈：设计一个支持 push，pop，top 操作，并能在常数时间内检索到最小元素的栈。
  * <p>
  * push(x) -- 将元素 x 推入栈中。
@@ -144,6 +212,57 @@ public class StackAndQueue {
  * getMin() -- 检索栈中的最小元素。
  * @Param: solution：利用两个栈：一个栈正常存入数据 另一个栈压入最小的元素（空间换时间）
  * @return:
+ */
+class MinStack {
+
+    Stack<Integer> stackPush;
+    Stack<Integer> stackMin;
+
+    /**
+     * initialize your data structure here.
+     */
+    public MinStack() {
+        this.stackMin = new Stack<>();
+        this.stackPush = new Stack<>();
+    }
+
+    public void push(int x) {
+        stackPush.push(x);
+        //如果当前元素是最小的就进栈，否则就最小元素进栈
+        // （保证进栈的元素都是当前最小的元素）
+        if(stackMin.empty()||stackMin.peek()>=x){
+            stackMin.push(x);
+        }else{
+           stackMin.push(this.stackMin.peek());
+        }
+    }
+
+    public void pop() {
+        if(!stackPush.empty()){
+            stackMin.pop();
+            stackPush.pop();
+
+        }
+    }
+
+    public int top() {
+        if(!stackPush.empty()){
+            return stackPush.peek();
+        }
+        return 0;
+    }
+
+    public int getMin() {
+
+
+        if(stackMin.empty()){
+            return 0;
+        }
+        return stackMin.peek();
+    }
+}
+
+/**
  * @Description: 设计你的循环队列实现。 循环队列是一种线性数据结构，
  * 其操作表现基于 FIFO（先进先出）原则并且队尾被连接在队首之后以形成一个循环。它也被称为“环形缓冲器”。
  * <p>
@@ -170,72 +289,65 @@ public class StackAndQueue {
  * rear front;rear=(rear+1)%length
  * @return:
  */
-class MyQueue {
 
-    /** Initialize your data structure here. */
-    public MyQueue() {
-
+class MyCircularQueue {
+private int size;
+  private int rear;
+ private int front;
+ private int[] array=new int[15];
+    /** Initialize your data structure here. Set the size of the queue to be k. */
+    public MyCircularQueue(int k) {
+this.size=0;
+this.front=this.rear;
     }
 
-    /** Push element x to the back of queue. */
-    public void push(int x) {
-
+    /** Insert an element into the circular queue. Return true if the operation is successful. */
+    public boolean enQueue(int value) {
+    if(this.size==this.array.length){
+        return false;
+    }
+    this.array[this.rear]=value;
+    this.rear=(this.rear+1)%this.array.length;
+    this.size++;
+    return true;
     }
 
-    /** Removes the element from in front of queue and returns that element. */
-    public int pop() {
-
+    /** Delete an element from the circular queue. Return true if the operation is successful. */
+    public boolean deQueue() {
+if(this.size==0){
+    return false;
+}
+this.front=(this.front+1)%this.array.length;
+this.size--;
+return true;
     }
 
-    /** Get the front element. */
-    public int peek() {
-
+    /** Get the front item from the queue. */
+    public int Front() {
+if(this.size==0){
+    return -1;
+}
+return this.array[this.front];
     }
 
-    /** Returns whether the queue is empty. */
-    public boolean empty() {
+    /** Get the last item from the queue. */
+    public int Rear() {
+if(this.size==0){
+    return -1;
+}
+int index=(this.rear-1+this.array.length)%this.array.length;
+return this.array[index];
+    }
 
+    /** Checks whether the circular queue is empty or not. */
+    public boolean isEmpty() {
+return this.size==0;
+    }
+
+    /** Checks whether the circular queue is full or not. */
+    public boolean isFull() {
+return this.size==this.array.length;
     }
 }
 
-/**
- * @Description: 最小栈：设计一个支持 push，pop，top 操作，并能在常数时间内检索到最小元素的栈。
- *
- * push(x) -- 将元素 x 推入栈中。
- * pop() -- 删除栈顶的元素。
- * top() -- 获取栈顶元素。
- * getMin() -- 检索栈中的最小元素。
- * @Param:
- * solution：利用两个栈：一个栈正常存入数据 另一个栈压入最小的元素（空间换时间）
- * @return:
- */
 
-/**
- * @Description: 设计你的循环队列实现。 循环队列是一种线性数据结构，
- * 其操作表现基于 FIFO（先进先出）原则并且队尾被连接在队首之后以形成一个循环。它也被称为“环形缓冲器”。
- *
- * 循环队列的一个好处是我们可以利用这个队列之前用过的空间。
- * 在一个普通队列里，一旦一个队列满了，我们就不能插入下一个元素，即使在队列前面仍有空间。
- * 但是使用循环队列，我们能使用这些空间去存储新的值。
- *
- * 你的实现应该支持如下操作：
- *
- * MyCircularQueue(k): 构造器，设置队列长度为 k 。
- * Front: 从队首获取元素。如果队列为空，返回 -1 。
- * Rear: 获取队尾元素。如果队列为空，返回 -1 。
- * enQueue(value): 向循环队列插入一个元素。如果成功插入则返回真。
- * deQueue(): 从循环队列中删除一个元素。如果成功删除则返回真。
- *           int index=(resr+length-1)%length
- *            array[index];
- * isEmpty(): 检查循环队列是否为空。
- *              solution: 1.size属性
- * isFull(): 检查循环队列是否已满。
- * @Param: private int[] array;
- *          private int size;
- *          private int rear;、、下一个可用位置下标
- *          private int front;队首元素下标
- *          rear front;rear=(rear+1)%length
-
- * @return:
- */
-}
