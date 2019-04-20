@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<contact-list>
+    <concat id="001">
+        <name>张三</name>
+        <gender>男</gender>
+        <phone>121212121</phone>
+        <email>hahs@qq.com</email>
+        <address>西安</address>
+    </concat>
+    <concat id="002">
+        <name>李四</name>
+        <gender>女</gender>
+        <phone>3434343</phone>
+        <email>er@qq.com</email>
+        <address>南京</address>
+    </concat>
+
+    <dependencies>
+        <dependency>dom4j
+            <artifactId>dom4j</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+    </dependencies>
+</contact-list>
