@@ -3,69 +3,87 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-<!--50.45-->
-    <!--标识项目，坐标[必选]-->
-    <groupId>www.github.sweeeeeet</groupId>
+
+    <!--标识项目，坐标 [必填]-->
+    <groupId>com.bittech</groupId>
     <artifactId>jdbc-with-maven</artifactId>
     <version>1.0.0</version>
-    <!--指定项目打包类型:jar war pom 【可选】默认jar-->
+    <!--指定项目打包类型 jar war pom [可选， 默认jar] -->
     <packaging>jar</packaging>
+
+    <!--项目名称 [可选]-->
     <name>jdbc-with-maven</name>
-    <!--项目描述【可选】-->
+    <!--项目描述信息 [可选] -->
     <description>
-        这是一个JDBC改造成为maven的项目
+        这是一个JDBC改造成为Maven的项目
     </description>
-    <!--开发者信息列表【可选】-->
+
+    <!--开发者信息列表 [可选]-->
     <developers>
         <developer>
             <id>001</id>
-            <name>sweeeeeet</name>
+            <name>secondriver</name>
+            <email>secondriver@yeah.net</email>
             <roles>
                 <role>Creator</role>
                 <role>Manager</role>
             </roles>
-
         </developer>
         <developer>
             <id>002</id>
-            <name>sweeeeeet2</name>
+            <name>secondriver2</name>
+            <email>secondriver2@yeah.net</email>
             <roles>
                 <role>Developer</role>
             </roles>
         </developer>
     </developers>
-    <!--属性信息【可选，但是会配置一些】-->
+
+    <!--属性信息 [可选，但是一般都会配置一些]-->
     <properties>
         <!--配置编码-->
         <encoding>UTF-8</encoding>
         <!--配置JDK版本-->
         <java.version>1.8</java.version>
-        <!--配置maven内置属性-->
-        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <!--配置Maven内置属性 [可选，但可以覆盖]-->
         <!--语法级别-->
-        <maven.compiler.target>${java.vendor}</maven.compiler.target>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <!--编译级别-->
+        <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
+
     <!--配置依赖的jar包-->
     <dependencies>
-        <!--使用第三方jar包，需要在https://search.maven.org网站上搜索并获取jar包的坐标-->
+        <!--使用第三方的jar包，需要在https://search.maven.org这个网站上搜索并获取jar包的坐标-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.46</version>
+            <version>5.1.47</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-jar-plugin</artifactId>
-            <version>3.1.0</version>
-            <type>maven-plugin</type>
-        </dependency>
+
     </dependencies>
+
+
     <!--配置构建信息-->
     <build>
-        <!--使用插件(插件也是由maven管理并构建的一个程序，插件也有坐标，插件也是支撑maven工作)-->
-        <!--jar-->
         <plugins>
-            <!--复制依赖的jar包到classpath-->
+            <!--插件也是有maven管理并且构建的一个程序，插件也有坐标，插件是支撑maven工作-->
+            <!--配置编译插件-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <!--配置内置属性之后，可选-->
+                <!--<configuration>-->
+                <!--<encoding>${encoding}</encoding>-->
+                <!--<source>${java.version}</source>-->
+                <!--<testSource>${java.version}</testSource>-->
+                <!--<target>${java.version}</target>-->
+                <!--<testTarget>${java.version}</testTarget>-->
+                <!--</configuration>-->
+            </plugin>
+
+            <!-- 复制依赖的jar到classpath -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -74,39 +92,44 @@
                 <executions>
                     <execution>
                         <id>copy</id>
-                        <phase>package</phase>
+                        <phase>
+                            package
+                        </phase>
                         <goals>
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <!--拷贝到target目录-->
+                            <!-- project/target/lib
+                            project.build.directory  = target
+                            -->
                             <outputDirectory>
-                                ${project.build.directory}
+                                ${project.build.directory}/lib
                             </outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+
+            <!--jar:用来生成jar文件-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.1.0</version>
-                <!--这里还可以配置其他信息-->
                 <configuration>
                     <archive>
+                        <!--在manifest中配置的属性一定注意大小写-->
                         <manifest>
-                    <!--打包主类-->
-                            <mainClass>
-                                package com.sweet.jdbc.UseTemplate3
-                            </mainClass>
+                            <!--主类-->
+                            <mainClass>com.bittech.jdbc.TestJdbcTemplate</mainClass>
+
+                            <!--表示：将依赖的jar路径添加到classpath-->
                             <addClasspath>true</addClasspath>
-                            <classPathPrefix>/lib</classPathPrefix>
+                            <!--表示：依赖的jar在lib目录指定lib为classpath的前缀-->
+                            <classpathPrefix>lib</classpathPrefix>
                         </manifest>
                     </archive>
                 </configuration>
-
             </plugin>
         </plugins>
-
     </build>
 </project>
