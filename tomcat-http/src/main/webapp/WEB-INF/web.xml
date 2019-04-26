@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                      http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <!--配置网站信息-->
+    <!--配置一个Servlet-->
+    <servlet>
+        <!--相当于在tomcat中穿梭的标识-->
+        <servlet-name>MyFirstServlet</servlet-name>
+        <servlet-class>com.github.sweeeeeet.tomcat.MyFirstServlet</servlet-class>
+    </servlet>
+    <!--配置Servlet的映射信息-->
+    <servlet-mapping>
+        <servlet-name>MyFirstServlet</servlet-name>
+        <!--映射路径-->
+        <url-pattern>/myFirstServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>HelloServlet</servlet-name>
+        <servlet-class>com.github.sweeeeeet.tomcat.HelloServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelloServlet</servlet-name>
+        <url-pattern>/helloServlet</url-pattern>
+    </servlet-mapping>
+</web-app>
