@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3mapper.dtd">
+<mapper namespace="com.github.sweeeeeet.mybatis.entity.MemoGroup">
+    <resultMap id="memoGroup" type="com.github.sweeeeeet.mybatis.entity.MemoGroup">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="createdTime" column="created_time" jdbcType="TIMESTAMP"/>
+        <result property="modifyTime" column="modify_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <select id="selectMemoGroup" resultMap="memoGroup">select id,name,created_time,modify_time from memo_group where id
+        =#{id}
+    </select>
+</mapper>
