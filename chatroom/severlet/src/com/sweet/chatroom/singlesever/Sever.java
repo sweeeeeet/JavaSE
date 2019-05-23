@@ -3,9 +3,7 @@ package com.sweet.chatroom.singlesever;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Author:sweet
@@ -29,7 +27,7 @@ public class Sever {
             //通过Scanner类接收客户端内容
             Scanner scanner=new Scanner(ir);
            String message= scanner.nextLine();
-            System.out.println(message);
+            System.out.println();
            //3.2 发送数据给客户端
             OutputStream outputStream=client.getOutputStream();
             OutputStreamWriter ow=new OutputStreamWriter(outputStream);
