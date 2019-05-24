@@ -26,4 +26,33 @@
         <servlet-name>HelloServlet</servlet-name>
         <url-pattern>/helloServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>LifeDemo</servlet-name>
+        <servlet-class>com.github.sweeeeeet.lifecycle.LifeDemo</servlet-class>
+<init-param>
+    <param-name>path</param-name>
+    <param-value></param-value>
+</init-param>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LifeDemo</servlet-name>
+        <url-pattern>/life</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ScopeDemo1</servlet-name>
+        <servlet-class>com.github.sweeeeeet.scope.ScopeDemo1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ScopeDemo1</servlet-name>
+        <url-pattern>/scope1</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ScopeDemo2</servlet-name>
+        <servlet-class>com.github.sweeeeeet.scope.ScopeDemo2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ScopeDemo2</servlet-name>
+        <url-pattern>/scope2</url-pattern>
+    </servlet-mapping>
 </web-app>
