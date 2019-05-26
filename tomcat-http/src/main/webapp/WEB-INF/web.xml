@@ -48,11 +48,19 @@
         <url-pattern>/scope1</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>ScopeDemo2</servlet-name>
-        <servlet-class>com.github.sweeeeeet.scope.ScopeDemo2</servlet-class>
-    </servlet>
+    <servlet-name>ScopeDemo2</servlet-name>
+    <servlet-class>com.github.sweeeeeet.scope.ScopeDemo2</servlet-class>
+</servlet>
     <servlet-mapping>
         <servlet-name>ScopeDemo2</servlet-name>
         <url-pattern>/scope2</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CookieCase1</servlet-name>
+        <servlet-class>com.github.sweeeeeet.cookie.CookieCase1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CookieCase1</servlet-name>
+        <url-pattern>/case1</url-pattern>
     </servlet-mapping>
 </web-app>
