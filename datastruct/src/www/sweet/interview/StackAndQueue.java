@@ -78,15 +78,13 @@ public class StackAndQueue {
      */
     class MyStack {
 
-        private LinkedList<Integer> stack = new LinkedList<>();
+        private LinkedList<Integer> stack;
 
-
-        /**
+        /*
          * Initialize your data structure here.
          */
         public MyStack() {
-
-
+            this.stack = new LinkedList<>();
         }
 
         /**
@@ -94,8 +92,7 @@ public class StackAndQueue {
          */
         public void push(int x) {
 //前插进队列就是栈的实现
-            stack.addFirst(x);
-
+            stack.addLast(x);
         }
 
         /**
@@ -103,10 +100,15 @@ public class StackAndQueue {
          */
         public int pop() {
 //出栈:后进先出《----》队列中的最后一个元素
-            if (stack.size() != 0) {
-                return stack.remove(0);
+            int size = this.stack.size();
+            for (int i = 0; i < size - 1; i++) {
+                int x = this.stack.get(0);
+                this.stack.remove(0);
+                this.stack.addLast(x);
             }
-            return 0;
+            int v = this.stack.get(0);
+            this.stack.remove(0);
+            return v;
         }
 
         /**
@@ -114,10 +116,16 @@ public class StackAndQueue {
          */
         public int top() {
             //栈顶元素就是后入队列的元素
-            if (stack.size() != 0) {
-                return stack.get(0);
+            int size = this.stack.size();
+            for (int i = 0; i < size - 1; i++) {
+                int x = this.stack.get(0);
+                this.stack.remove(0);
+                this.stack.addLast(x);
             }
-            return 0;
+            int v = this.stack.get(0);
+            this.stack.remove(0);
+            this.stack.addLast(v);
+            return v;
         }
 
         /**
@@ -129,7 +137,6 @@ public class StackAndQueue {
             }
             return false;
         }
-
     }
 }
 
@@ -230,15 +237,15 @@ class MinStack {
         stackPush.push(x);
         //如果当前元素是最小的就进栈，否则就最小元素进栈
         // （保证进栈的元素都是当前最小的元素）
-        if(stackMin.empty()||stackMin.peek()>=x){
+        if (stackMin.empty() || stackMin.peek() >= x) {
             stackMin.push(x);
-        }else{
-           stackMin.push(this.stackMin.peek());
+        } else {
+            stackMin.push(this.stackMin.peek());
         }
     }
 
     public void pop() {
-        if(!stackPush.empty()){
+        if (!stackPush.empty()) {
             stackMin.pop();
             stackPush.pop();
 
@@ -246,7 +253,7 @@ class MinStack {
     }
 
     public int top() {
-        if(!stackPush.empty()){
+        if (!stackPush.empty()) {
             return stackPush.peek();
         }
         return 0;
@@ -255,7 +262,7 @@ class MinStack {
     public int getMin() {
 
 
-        if(stackMin.empty()){
+        if (stackMin.empty()) {
             return 0;
         }
         return stackMin.peek();
@@ -269,84 +276,93 @@ class MinStack {
  * 循环队列的一个好处是我们可以利用这个队列之前用过的空间。
  * 在一个普通队列里，一旦一个队列满了，我们就不能插入下一个元素，即使在队列前面仍有空间。
  * 但是使用循环队列，我们能使用这些空间去存储新的值。
- * <p>
- * 你的实现应该支持如下操作：
- * <p>
- * MyCircularQueue(k): 构造器，设置队列长度为 k 。
- * Front: 从队首获取元素。如果队列为空，返回 -1 。
- * Rear: 获取队尾元素。如果队列为空，返回 -1 。
- * enQueue(value): 向循环队列插入一个元素。如果成功插入则返回真。
- * deQueue(): 从循环队列中删除一个元素。如果成功删除则返回真。
- * int index=(resr+length-1)%length
- * array[index];
- * isEmpty(): 检查循环队列是否为空。
- * solution: 1.size属性
- * isFull(): 检查循环队列是否已满。
  * @Param: private int[] array;
  * private int size;
  * private int rear;、、下一个可用位置下标
  * private int front;队首元素下标
- * rear front;rear=(rear+1)%length
+ * rear front;
+ * 实现循环：rear=(rear+1)%length
+ * int index=(rear+length-1)%length
+ * array[index]
+ * 判断队列为空/满：size为0则空 size不为0&&front==rear
+ * front-rear=1时就强行判定为满
  * @return:
  */
 
 class MyCircularQueue {
-private int size;
-  private int rear;
- private int front;
- private int[] array=new int[15];
-    /** Initialize your data structure here. Set the size of the queue to be k. */
+    private int size;
+    private int rear;
+    private int front;
+    private int[] array;
+
+    /**
+     * Initialize your data structure here. Set the size of the queue to be k.
+     */
     public MyCircularQueue(int k) {
-this.size=0;
-this.front=this.rear;
+        this.size = 0;
+        this.front = 0;
+        this.rear = 0;
+        array = new int[k];
     }
 
-    /** Insert an element into the circular queue. Return true if the operation is successful. */
+    /**
+     * Insert an element into the circular queue. Return true if the operation is successful.
+     */
     public boolean enQueue(int value) {
-    if(this.size==this.array.length){
-        return false;
-    }
-    this.array[this.rear]=value;
-    this.rear=(this.rear+1)%this.array.length;
-    this.size++;
-    return true;
+        if (this.size == this.array.length) {
+            return false;
+        }
+        this.array[this.rear] = value;
+        this.rear = (this.rear + 1) % this.array.length;
+        this.size++;
+        return true;
     }
 
-    /** Delete an element from the circular queue. Return true if the operation is successful. */
+    /**
+     * Delete an element from the circular queue. Return true if the operation is successful.
+     */
     public boolean deQueue() {
-if(this.size==0){
-    return false;
-}
-this.front=(this.front+1)%this.array.length;
-this.size--;
-return true;
+        if (this.size == 0) {
+            return false;
+        }
+        this.front = (this.front + 1) % this.array.length;
+        this.size--;
+        return true;
     }
 
-    /** Get the front item from the queue. */
+    /**
+     * Get the front item from the queue.
+     */
     public int Front() {
-if(this.size==0){
-    return -1;
-}
-return this.array[this.front];
+        if (this.size == 0) {
+            return -1;
+        }
+        return this.array[this.front];
     }
 
-    /** Get the last item from the queue. */
+    /**
+     * Get the last item from the queue.
+     */
     public int Rear() {
-if(this.size==0){
-    return -1;
-}
-int index=(this.rear-1+this.array.length)%this.array.length;
-return this.array[index];
+        if (this.size == 0) {
+            return -1;
+        }
+        int index = (this.rear - 1 + this.array.length) % this.array.length;
+        return this.array[index];
     }
 
-    /** Checks whether the circular queue is empty or not. */
+    /**
+     * Checks whether the circular queue is empty or not.
+     */
     public boolean isEmpty() {
-return this.size==0;
+        return this.size == 0;
     }
 
-    /** Checks whether the circular queue is full or not. */
+    /**
+     * Checks whether the circular queue is full or not.
+     */
     public boolean isFull() {
-return this.size==this.array.length;
+        return this.size == this.array.length;
     }
 }
 
