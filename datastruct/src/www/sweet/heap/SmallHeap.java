@@ -7,8 +7,9 @@ package www.sweet.heap;
 public class SmallHeap {
 
     private void adjustHeap(int[] tree, int index) {
-        int min = index + 1;
         //找左孩子
+        int min = index + 1;
+
         while (min < tree.length) {
             //找右孩子，取最小的
             if (min + 1 < tree.length && tree[min + 1] < tree[min]) {
