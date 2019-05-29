@@ -534,10 +534,11 @@ public static void mergeSort(int[] array){
 
     public static void main(String[] args) {
 //       int[] t= new int[]{3,1,2};
-        int[] array = new int[]{1, 0, 2, 7, 5, 3, 7, 2, 9, 5};
+      //  int[] array = new int[]{1, 0, 2, 7, 5, 3, 7, 2, 9, 5};
 //        System.out.println(midOfThreeNum(t,0,t.length-1));;
         // mergeSort(array);
-        mergeSort(array);
+        int[] array =new int[]{2,5,1,5,6,9,3,4};
+        heapSotP(array);
         System.out.println(Arrays.toString(array));
     }
 
