@@ -10,6 +10,8 @@ package www.sweet.interview;
  *      4 方便断开方便接上
  */
 public class LinkedNode {
+static  int p=0;
+
     /**
      * @Description: 删除链表中的指定元素{1.考虑指定元素包含了head的情况}
      * 1.
@@ -26,6 +28,7 @@ public class LinkedNode {
     }
 
     public LinkedNode removeElements(LinkedNode head, int value) {
+
         //1.定义新链表的头节点
         LinkedNode newHead = null;
         LinkedNode cur = head;
@@ -108,6 +111,7 @@ public class LinkedNode {
         }
         return pre;
     }
+
 
 
     /**
