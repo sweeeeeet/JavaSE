@@ -360,11 +360,11 @@ public  boolean isSelfMiiro(Node root){
         c.left = f;
         c.right = g;
 
-        System.out.println(height(a));
-        System.out.println(find(a, 'D'));
-        System.out.println(find(a, 'W'));
-        BinaryTreeInterview tree=new BinaryTreeInterview();
-    ReturnRoot newTree=  tree.creatTree(new char[]{'A','B','C','#','D','#','#','#','E'});
-    Node ntree=newTree.nowRoot;
+        System.out.println(countLeaf(a));
+//        System.out.println(find(a, 'D'));
+//        System.out.println(find(a, 'W'));
+//        BinaryTreeInterview tree=new BinaryTreeInterview();
+//    ReturnRoot newTree=  tree.creatTree(new char[]{'A','B','C','#','D','#','#','#','E'});
+//    Node ntree=newTree.nowRoot;
     }
 }
