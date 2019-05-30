@@ -66,7 +66,6 @@ public class MyLink implements ILinkedList {
             last.next = node;
         }
     }
-
     private Node getLast() {
         Node cur = this.head;
         while (cur.next != null) {
