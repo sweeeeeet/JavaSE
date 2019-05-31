@@ -53,7 +53,7 @@ static  int p=0;
             newHead.next = null;
             cur = next;
 
-        }
+    }
 
         return newHead;
     }
