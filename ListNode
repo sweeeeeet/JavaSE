@@ -1,0 +1,63 @@
+链接：https://www.nowcoder.com/questionTerminal/ed85a09f0df047119e94fb3e5569855a
+来源：牛客网
+
+有两个用链表表示的整数，每个结点包含一个数位。这些数位是反向存放的，也就是个位排在链表的首部。编写函数对这两个整数求和，并用链表形式返回结果。
+
+给定两个链表ListNode* A，ListNode* B，请返回A+B的结果(ListNode*)。
+import java.util.*;
+/*
+public class ListNode {
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}*/
+public class Plus {
+    public ListNode plusAB(ListNode a, ListNode b) {
+        int carry=0;
+        int temp=0;
+        ListNode res=new ListNode(0);
+        ListNode next=res;
+        if(a!=null&&b!=null){
+            while(a!=null&&b!=null){
+                temp=(a.val+b.val+carry)%10;
+                carry=(a.val+b.val+carry)/10;
+                next.next=new ListNode(temp);
+                next=next.next;
+                a=a.next;
+                    b=b.next;
+            }
+            if(carry>0){
+                next.next=new ListNode(carry);
+            }
+        }
+        if(a==null&&b!=null){
+            while(b!=null){
+                temp=(b.val+carry)%10;
+                carry=(b.val+carry)/10;
+                next.next=new ListNode(temp);
+                next=next.next;
+                b=b.next;
+            }
+              if(carry>0){
+                next.next=new ListNode(carry);
+            }
+        }
+        if(b==null&&a!=null){
+            while(a!=null){
+                temp=(a.val+carry)%10;
+                carry=(a.val+carry)/10;
+                next.next=new ListNode(temp);
+                next=next.next;
+                a=a.next;
+            }
+              if(carry>0){
+                next.next=new ListNode(carry);
+            }
+        }
+        
+        return res.next;
+    }
+}
