@@ -1,0 +1,32 @@
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int count=0;
+        while(sc.hasNext()){
+            String bo=sc.nextLine();
+            String a=sc.nextLine();
+            String[] boss=bo.split("");
+            ArrayList<String> b=new ArrayList<>();
+            for(int i=0;i<boss.length;i++){
+                b.add(boss[i]);
+            }
+            
+            String[] buy=a.split("");
+            for(int i=0;i<buy.length;i++){
+                if(b.contains(buy[i])){
+                    b.remove(buy[i]);
+                }else{
+                    count++;
+                    
+                }
+            }
+                if(count>0){
+                     System.out.println("No "+count);
+                }else{
+                    System.out.println("Yes "+(boss.length-buy.length));
+                }
+               
+            }
+        }
+    }
