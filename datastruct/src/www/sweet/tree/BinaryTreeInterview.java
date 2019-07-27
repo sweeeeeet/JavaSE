@@ -42,12 +42,12 @@ public class BinaryTreeInterview {
      */
     public static void inOrderTravel(Node root) {
         if (root != null) {
-            //先根
+            //先左
+            preOrderTravel(root.left);
+            //再根
             System.out.println(root.val);
             //再右
             preOrderTravel(root.right);
-            //再左
-            preOrderTravel(root.left);
         }
     }
 
@@ -87,10 +87,14 @@ public class BinaryTreeInterview {
     * @return:
     */
 public static int countLeaf(Node root){
-    if(root!=null){
-        return countLeaf(root.left)+countLeaf(root.right);
+    if(root==null){
+        return 0;
+
     }
-    return 0;
+    if(root.left==null&&root.right==null) {
+        return 1;
+    }
+        return countLeaf(root.left)+countLeaf(root.right);
 }
     /**
      * @Description: 求二叉树的高度
