@@ -74,6 +74,34 @@ public class ArrayQuestions {
         }
         return len;
     }
+
+    /*
+    * 给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+示例:
+输入: [-2,1,-3,4,-1,2,1,-5,4],
+输出: 6
+解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。
+    *
+    * */
+    public int maxSubArray(int[] nums) {
+
+        int sum=0;
+        int res=nums[0];
+        for(int num:nums){
+            //连续求和，如果和已经小于0，无论后面这个数是什么情况，都没必要给sum加上，
+            //只需要重新定位连续求和的序列和
+            if(sum>0){
+                sum+=num;
+            }else{
+                sum=num;
+            }
+
+            //找最大的序列和
+            res=res>sum?res:sum;
+        }
+        return res;
+
+    }
     public static void main(String[] args) {
             int[]  arr=new int[]{2,1,2};
     }
