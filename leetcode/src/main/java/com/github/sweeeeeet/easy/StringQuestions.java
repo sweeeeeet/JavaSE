@@ -246,7 +246,6 @@ Soluion:斐波那契数列
     }
 
 
-
     /*给定两个字符串 A 和 B, 寻找重复叠加字符串A的最小次数，
     使得字符串B成为叠加后的字符串A的子串，如果不存在则返回 -1。
 
@@ -257,17 +256,59 @@ Soluion:斐波那契数列
 注意:
  A 与 B 字符串的长度在1和10000区间范围内。*/
     public int repeatedStringMatch(String A, String B) {
-        int lenA=A.length();
-        int lenB=B.length();
-        StringBuffer sb =new StringBuffer();
+        int lenA = A.length();
+        int lenB = B.length();
+        StringBuffer sb = new StringBuffer();
         //其中“lenB / lenA”代表的B串中间A重复的次数，“+2”代表的首尾各添加一个A串
-        for(int i=0;i<(lenB/lenA+2);i++){
+        for (int i = 0; i < (lenB / lenA + 2); i++) {
             String str = sb.append(A).toString();
-            if(str.contains(B)){
-                return i+1;
+            if (str.contains(B)) {
+                return i + 1;
             }
         }
         return -1;
+    }
+
+    /*
+    * 报数序列是一个整数序列，按照其中的整数的顺序进行报数，得到下一个数。其前五项如下：
+1.     1
+2.     11
+3.     21
+4.     1211
+5.     111221
+1 被读作  "one 1"  ("一个一") , 即 11。
+11 被读作 "two 1s" ("两个一"）, 即 21。
+21 被读作 "one 2",  "one 1" （"一个二" ,  "一个一") , 即 1211。
+给定一个正整数 n（1 ≤ n ≤ 30），输出报数序列的第 n 项。
+注意：整数顺序将表示为一个字符串。
+    * */
+
+    public String countAndSay(int n) {
+
+        if(n==1){
+            return "1";
+
+        }else{
+            String str=countAndSay(n-1);
+            String num="";
+
+            for(int i=0;i<str.length();){
+                int later=1;
+                while(later+i<str.length()&&str.charAt(i)==str.charAt(i+later)){
+
+                    later++;
+
+                }
+
+                String currentNum=String.valueOf(str.charAt(i));
+                i=i+later;
+                String part=later+currentNum;
+                num+=part;
+
+            }
+            return num;
+
+        }
     }
     public static void main(String[] args) {
     }
