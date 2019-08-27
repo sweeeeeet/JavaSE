@@ -66,7 +66,7 @@ Scanner scanner=new Scanner(System.in);
         System.out.println("        功能：基于字符界面的收银台操作系统       ");
         System.out.println("        作者: sweeeeeet                          ");
         System.out.println("        版本: v0.3.0                             ");
-        System.out.println("        意见反馈：自行消化，不接受反驳           ");
+        System.out.println("        意见反馈：tell me by any way             ");
         System.out.println("-------------------------------------------------");
     }
 
